@@ -19,11 +19,46 @@
   }
   
   .textContent h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 1.5rem;
-    color: #333;
+    color: #626262;
   }
-  
+
+  .textContent span {
+    color: hsla(0, 0%, 27%, 0.4);
+    background-clip: text;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to right, #000, #000);
+    background-size: 0% 100%;
+    animation: scroll-shine linear forwards;
+    animation-timeline: view();
+  }
+
+  .textContent h2 span {
+    animation-range-start: cover 20vh;
+    animation-range-end: cover 30vh;
+  }
+  .textContent .aboutText1 span {
+    animation-range-start: cover 22.5vh;
+    animation-range-end: cover 42vh;
+  }
+
+  .textContent .aboutText2 span {
+    animation-range-start: cover 26vh;
+    animation-range-end: cover 67vh;
+  }
+
+  .textContent .aboutText3 span {
+    animation-range-start: cover 47vh;
+    animation-range-end: cover 80vh;
+  }
+
+  @keyframes scroll-shine {
+    to {
+      background-size: 100% 100%;
+    }
+  }
+
   .textContent p {
     font-size: 1.1rem;
     line-height: 1.6;

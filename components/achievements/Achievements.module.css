@@ -1,6 +1,6 @@
 .container {
   background-color: white;
-  padding: 4rem 2rem;
+  padding: 8rem 2rem;
   display: flex;
   justify-content: center;
   gap: 2rem;
@@ -19,6 +19,51 @@
   flex-direction: column;
   justify-content: center;
   color: white;
+  transform: translateY(80px);
+  animation: transform1 linear forwards;
+  animation-timeline: view();
+  animation-range: contain;
+}
+
+.achievementCard:nth-child(2) {
+  transform: translateY(-80px);
+  animation: transform2 linear forwards;
+  animation-timeline: view();
+  animation-range: contain;
+}
+
+.achievementCard:nth-child(3) {
+  transform: translateY(80px);
+  animation: transform3 linear forwards;
+  animation-timeline: view();
+  animation-range: contain;
+}
+
+@keyframes transform1 {
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-80px);
+  }
+}
+
+@keyframes transform2 {
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(80px);
+  }
+}
+
+@keyframes transform3 {
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-80px);
+  }
 }
 
 .achievementCard::before {

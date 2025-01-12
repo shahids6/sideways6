@@ -34,7 +34,7 @@ const Gallery = () => {
   };
 
   return (
-    <div className={styles['gallery-container']}>
+    <div className={styles['gallery-container']} id='gallery'>
       <h2 className={styles['gallery-title']}>Photo Gallery</h2>
       
       <div className={styles['gallery-grid-container']}>

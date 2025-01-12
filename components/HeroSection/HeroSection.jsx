@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './heroSection.module.css'
 import Image from 'next/image'
+import Link from 'next/link';
 
 const HeroSection = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className={styles.heroContainer} id='home'>
       <div className={styles.imageBg}>
@@ -12,7 +24,11 @@ const HeroSection = () => {
           fill
           priority
           quality={100}
-          style={{ objectFit: 'cover' }}
+          style={{ 
+            objectFit: 'cover',
+            transform: `translateY(${scrollPosition * 0.5}px) scale(1.1)`,
+            transition: 'transform 0.1s ease-out'
+          }}
         />
       </div>
       
@@ -31,8 +47,12 @@ const HeroSection = () => {
         </p>
         
         <div className={styles.buttonGroup}>
-          <button className={styles.primaryBtn}>Start Your Journey</button>
-          <button className={styles.secondaryBtn}>Learn more</button>
+          <Link href="#contact">
+            <button className={styles.primaryBtn}>Start Your Journey</button>
+          </Link>
+          <Link href="#about">
+            <button className={styles.secondaryBtn}>Learn more</button>
+          </Link>
         </div>
       </div>
     </div>

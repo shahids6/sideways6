@@ -3,7 +3,7 @@
   padding: 4rem 2rem;
   display: flex;
   gap: 3rem;
-  max-width: 1380px;
+  max-width: 1260px;
   margin: 0 auto;
   position: relative;
 }
@@ -25,12 +25,10 @@
 
 .leftContent {
   flex: 0 0 50%;
-  max-width: 500px;
   position: sticky;
-  top: 4rem;
+  top: 125px;
   height: fit-content;
   align-self: flex-start;
-  position: relative;
   z-index: 1;
 }
 

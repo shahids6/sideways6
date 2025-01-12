@@ -18,7 +18,7 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { href: '#home', label: 'Home' },
+    { href: '/', label: 'Home' },
     { href: '#about', label: 'About' },
     { href: '#services', label: 'Services' },
     { href: '#gallery', label: 'Gallery' },
@@ -86,11 +86,14 @@ const Header = () => {
           z-index: 50;
           transition: all 0.3s;
           background: transparent;
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(10px);
         }
 
         header.scrolled {
-          background: rgba(255, 255, 255, 0.9);
-          backdrop-filter: blur(12px);
+          background: rgba(255, 255, 255, 0.7);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
