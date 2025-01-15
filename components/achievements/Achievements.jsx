@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './Achievements.module.css';
 
-const Achievements = () => {
-  const achievements = [
+const achievements = [
     { 
       number: '400+', 
       label: 'Beautiful Events',
@@ -20,6 +19,8 @@ const Achievements = () => {
     },
   ];
 
+const Achievements = () => {
+  
   return (
     <div className={styles.container}>
       {achievements.map((achievement, index) => (
@@ -29,8 +30,10 @@ const Achievements = () => {
             alt={achievement.label}
             className={styles.backgroundImage}
           />
-          <div className={styles.number}>{achievement.number}</div>
-          <div className={styles.label}>{achievement.label}</div>
+          <div className={styles.content}>
+            <div className={styles.number}>{achievement.number}</div>
+            <div className={styles.label}>{achievement.label}</div>
+          </div>
         </div>
       ))}
     </div>

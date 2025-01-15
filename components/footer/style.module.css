@@ -72,3 +72,23 @@
   margin-top: 4rem;
   color: #666;
 } 
+
+@media (max-width: 768px) {
+  .footerHeader {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .footerNav ul {
+    gap: 1rem;
+  }
+  .messageSection {
+    margin: 1rem 0;
+    max-width: 100%;
+  }
+  .contactCards {
+    gap: 1rem;
+  }
+  .contactCard {
+    width: 100%;
+  }
+}

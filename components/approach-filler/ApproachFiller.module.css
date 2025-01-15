@@ -1,7 +1,8 @@
 .container {
   background-color: #ffffff;
   color: #000000;
-  padding: 5rem 0;
+  padding: 4rem 0;
+  background-color: #f8f9fa;
 }
 
 .wrapper {
@@ -11,7 +12,7 @@
 }
 
 .title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 3vw, 3rem);
   text-align: center;
   margin-bottom: 1rem;
   color: #333333
@@ -21,8 +22,8 @@
 .grid {
   display: grid;
   gap: 2rem;
-  margin-top: 3rem;
-  padding: 0 1rem;
+  margin-top: clamp(1rem, 3vw, 3rem);
+  /* padding: 0 1rem; */
 }
 
 @media (min-width: 768px) {
@@ -33,9 +34,9 @@
 
 .card {
   text-align: center;
-  padding: 1.5rem;
+  /* padding: 1.5rem; */
   transition: all 0.3s ease;
-  background-color: #ffffff;
+  background-color: #f8f9fa;
   position: relative;
   z-index: 2;
 }
@@ -44,7 +45,7 @@
   transform: translateX(100px);
   animation: transform linear forwards;
   animation-timeline: view();
-  animation-range: contain;
+  animation-range: entry 0% 40vh;
   z-index: 0;
 }
 
@@ -52,15 +53,10 @@
   transform: translateX(-100px);
   animation: transform linear forwards;
   animation-timeline: view();
-  animation-range: contain 0% 50%;
+  animation-range: entry 0% 40vh;
   z-index: 0;
 }
 
-@keyframes transform  {
-  to {
-    transform: translateX(0);
-  }
-}
 
 
 .iconWrapper {
@@ -102,13 +98,42 @@
 }
 
 .cardTitle {
-  font-size: 1.5rem;
+  font-size: clamp(1.5rem);
   font-weight: 600;
-  margin-bottom: 0.75rem;
+  margin-bottom: clamp(0.5rem, 0.75vw, 0.75rem);
   color: #333333;
 }
 
 .description {
   line-height: 1.6;
   color: #666;
+  font-size: clamp(0.88rem, 1vw, 1rem);
+  max-width: 250px;
+  text-align: center;
+  margin: auto;
 } 
+
+@media (max-width: 768px) {
+  .container {
+    padding: 3rem 1rem;
+  }
+  
+  .card:nth-child(2) {
+    transform: translateX(-100px);
+    animation: transform linear forwards;
+    animation-timeline: view();
+    animation-range: entry 0% 30vh;
+  }
+  .card:nth-child(3) {
+    transform: translateX(100px);
+    animation: transform linear forwards;
+    animation-timeline: view();
+    animation-range: entry 0% 30vh;
+  }
+}
+
+@keyframes transform  {
+  to {
+    transform: translateX(0);
+  }
+}
