@@ -5,55 +5,6 @@
   overflow: hidden;
 }
 
-/* Decorative bubbles */
-.contactSection::before,
-.contactSection::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(79, 70, 229, 0.1);
-  z-index: 0;
-}
-
-.contactSection::before {
-  width: 400px;
-  height: 400px;
-  top: -15%;
-  left: -10%;
-}
-
-.contactSection::after {
-  width: 300px;
-  height: 300px;
-  bottom: -10%;
-  right: -5%;
-}
-
-/* Add decorative curves */
-.contactSection .curve1,
-.contactSection .curve2 {
-  position: absolute;
-  pointer-events: none;
-  opacity: 0.1;
-}
-
-.curve1 {
-  top: 20%;
-  left: 15%;
-  width: 150px;
-  height: 150px;
-  border: 2px solid #4f46e5;
-  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-}
-
-.curve2 {
-  bottom: 20%;
-  right: 15%;
-  width: 180px;
-  height: 180px;
-  border: 2px solid #7c3aed;
-  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-}
 
 .contactWrapper {
   max-width: 1350px;
@@ -61,12 +12,18 @@
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: 2rem;
-  background: #ffffff;
+  background: #2c2c2c;
   border-radius: 20px;
   padding: 3rem;
   position: relative;
   z-index: 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: grid-template-columns 0.3s ease;
+}
+
+
+.contactWrapper:has(.rightSection:hover) {
+  grid-template-columns: 1fr 1.7fr;
 }
 
 .leftSection {
@@ -75,23 +32,21 @@
   justify-content: center;
 }
 
+.leftSection:hover {
+  scale: 1.09;
+}
+
 .title {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  color: #1f2937;
+  font-size: clamp(2rem, 3vw, 3rem);
+  margin-bottom: clamp(.5rem, 2vw, 1rem);
+  color: #fff;
 }
 
 .subtitle {
-  font-size: 1.1rem;
-  color: #6b7280;
+  font-size: clamp(.88rem, 2vw, 1.1rem);
+  color: #fff;
 }
 
-.rightSection {
-  background: rgba(79, 70, 229, 0.03);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 2rem;
-}
 
 .inputGroup {
   display: flex;
@@ -101,9 +56,9 @@
 }
 
 .inputGroup label {
-  font-size: 0.9rem;
+  font-size: clamp(.88rem, 2vw, 1.1rem);
   font-weight: 500;
-  color: #6b7280
+  color: #fff;
 }
 
 .error {
@@ -116,7 +71,7 @@
 .inputGroup textarea {
   width: 100%;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.8);
+  background: white;
   border: 1px solid rgba(79, 70, 229, 0.2);
   border-radius: 8px;
   color: #1f2937;
@@ -159,10 +114,14 @@
 @media (max-width: 768px) {
   .contactWrapper {
     grid-template-columns: 1fr;
+    padding: 1.5rem;
+    border-radius: 12px;
   }
   
   .leftSection {
     text-align: center;
-    padding-bottom: 2rem;
+  }
+  .contactSection {
+    padding: 3rem 1rem;
   }
 } 

@@ -71,6 +71,7 @@ const Clients = () => {
   return (
     <section className={styles.clientsSection}>
       <h2 className={styles.title}>Our Trusted Clients</h2>
+      <p className={styles.subtitle}>Partnering with industry leaders across the globe</p>
       <div className={styles.logoContainer}>
         {logos.map((logo, index) => (
           <div 

@@ -5,43 +5,38 @@
 
 .gallery-title {
   text-align: center;
-  margin-bottom: 2rem;
-  font-size: 3rem;
+  margin-bottom: clamp(1rem, 2vw, 2rem);
+  line-height: 1;
+  font-size: clamp(2rem, 3vw, 3rem);
 }
 
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
-  animation: autoScroll 15s linear infinite; /* Adjust 30s to control speed */
+  display: flex;
+  gap: 20px;
+  height: 80vh;
+  overflow: hidden;
 }
 
 .gallery-item {
+  width: 100%;
+  margin-bottom: 20px;
   cursor: pointer;
   overflow: hidden;
 }
 
 .image-wrapper {
+  width: 100%;
   position: relative;
-  padding-bottom: 100%; /* Creates a square aspect ratio by default */
-  height: 0;
   overflow: hidden;
 }
 
 .image-wrapper img {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* This maintains aspect ratio while filling the container */
+  height: auto;
+  display: block;
+  object-fit: cover;
   transition: transform 0.3s ease;
   border-radius: 16px;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.05);
 }
 
 .modal {
@@ -124,16 +119,74 @@
   background: #555;
 }
 
-@keyframes autoScroll {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(calc(-100% + 600px)); /* Match container height */
-  }
-}
-
 /* Pause animation on hover */
 .gallery-grid:hover {
   animation-play-state: paused;
 } 
+
+.gallery-columns-container {
+  display: flex;
+  gap: 20px;
+  height: 80vh;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 30%,
+    black 70%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 30%,
+    black 70%,
+    transparent 100%
+  );
+}
+
+.gallery-column {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.column-scroll {
+  animation: scrollUp 20s linear infinite;
+}
+
+.column-scroll.paused {
+  animation-play-state: paused;
+}
+
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-columns-container {
+    gap: 10px;
+    height: 40vh;
+  }
+  .gallery-item {
+    margin-bottom: 10px;
+  }
+  .image-wrapper img {
+    border-radius: 8px;
+  }
+  .gallery-container {
+    padding: 3rem 1rem;
+  }
+}
+
+.gallery-subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: clamp(1rem, 2vw, 2rem);
+  font-size: clamp(.88rem, 2vw, 1.1rem);
+}

@@ -3,10 +3,22 @@
   background: white;
 }
 
+
+.headerSection {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.subtitle {
+  color: #666;
+  font-size: clamp(.88rem, 2vw, 1.1rem);
+} 
+
 .services h2 {
   text-align: center;
-  font-size: 3rem;
-  margin-bottom: 3rem;
+  font-size: clamp(2rem, 2.5vw, 3rem);
+  margin-bottom: clamp(1rem, 2vw, 3rem);
+  line-height: 1.2;
   color: #333;
 }
 
@@ -15,7 +27,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: clamp(1rem, 3vw, 2rem);
 }
 
 .serviceCard {
@@ -81,28 +93,6 @@
   opacity: 1;
 }
 
-@media (max-width: 768px) {
-  .services {
-    padding: 2rem 1rem;
-  }
-  
-  .services h2 {
-    font-size: 2rem;
-  }
-  
-  .serviceCard {
-    height: 300px;
-  }
-  
-  .overlay {
-    padding: 1.5rem;
-  }
-  
-  .overlay h3 {
-    font-size: 1.5rem;
-  }
-} 
-
 .cardContent {
   display: flex;
   gap: 2rem;
@@ -120,14 +110,15 @@
 }
 
 .textContent h3 {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  margin-bottom: clamp(.5rem, 2vw, 1rem);
+  line-height: 1.5;
 }
 .textContent p {
-    font-size: 15px;
+    font-size: clamp(.88rem, 2vw, 1.1rem);
     line-height: 1.5;
     letter-spacing: .5px;
-    margin-bottom: 1rem;
+    margin-bottom: clamp(.4rem, 2vw, 1rem);
 }
 
 .imageContent {
@@ -153,14 +144,56 @@
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: clamp(.4rem, 2vw, .8rem);
 }
 
 .checkmark {
-  min-width: 16px;
+  min-width: clamp(10px, 2vw, 16px);
   color: #4CAF50; /* Or any color you prefer */
 }
 
 .bulletPoints li span {
   color: #fff;
+  font-size: clamp(.88rem, 2vw, 1.1rem);
 } 
+
+@media (max-width: 768px) {
+  .services {
+    padding: 2rem 1rem;
+  }
+  
+  .services h2 {
+    font-size: 2rem;
+  }
+  
+  .serviceCard {
+    height: auto;
+    border-radius: 12px;
+  }
+  .imageContent img {
+    width: 100%;
+    border-radius: 10px;
+    height: 100%;
+  }
+  
+  .overlay {
+    padding: 1.5rem;
+  }
+  
+  .overlay h3 {
+    font-size: 1.5rem;
+  }
+  .cardContent {
+    flex-direction: column !important;
+    gap: 0px;
+  }
+  .textContent {
+    padding: 1rem 1rem 0 1rem;
+  }
+  .imageContent {
+    padding: 1rem;
+    height: 200px;
+  }
+} 
+
+

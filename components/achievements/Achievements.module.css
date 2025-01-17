@@ -112,21 +112,21 @@
     width: 100%;
     height: 100%;
     opacity: .8;
-    transform: perspective(1200px) rotateX(30deg);
+    transform: perspective(1200px) rotateX(40deg);
     animation: perspectives linear forwards;
     animation-timeline: view(y);
     animation-range: entry;
   }
 
   .achievementCard:nth-child(2) {
-    transform: perspective(1200px) rotateX(30deg);
+    transform: perspective(1200px) rotateX(40deg);
     animation: perspectives linear forwards;
     animation-timeline: view(y);
     animation-range: entry;
   } 
 
   .achievementCard:nth-child(3) {
-    transform: perspective(1200px) rotateX(30deg);
+    transform: perspective(1200px) rotateX(40deg);
     animation: perspectives linear forwards;
     animation-timeline: view(y);
     animation-range: entry;

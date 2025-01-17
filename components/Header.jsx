@@ -30,7 +30,8 @@ const Header = () => {
       <nav>
         <div className="nav-container">
           <Link href="/" className="logo">
-            <Image src={brandLogo} alt="Brand Logo" width={200} height={57} />
+            <div className='logo-desktop'><Image src={brandLogo} alt="Brand Logo" width={200} height={57} /></div>
+            <div className="logo-mobile"><Image src={brandLogo} alt="Brand Logo" width={115} height={35} /></div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -88,6 +89,9 @@ const Header = () => {
           background: transparent;
           backdrop-filter: blur(8px);
           -webkit-backdrop-filter: blur(10px);
+        }
+        .logo-mobile {
+          display: none;
         }
 
         header.scrolled {
@@ -178,15 +182,28 @@ const Header = () => {
           color: var(--primary-color);
         }
 
-        @media (min-width: 768px) {
+        @media (max-width: 768px) {
           .mobile-menu-button {
             display: none;
+          }
+
+          nav {
+            padding: 14px;
           }
 
           .desktop-nav {
             display: flex;
             align-items: center;
             gap: 2rem;
+            display: none;
+          }
+
+          .logo-mobile {
+            display: block;
+          }
+
+          .logo-desktop {
+            display: none;
           }
         }
       `}</style>

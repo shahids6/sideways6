@@ -5,9 +5,10 @@
 }
 
 .title {
-  font-size: 3rem;
-  margin-bottom: 3rem;
+  font-size: clamp(2rem, 3vw, 3rem);
+  margin-bottom: clamp(.75rem, 2vw, 3rem);
   color: #333;
+  line-height: 1;
 }
 
 .logoContainer {
@@ -64,3 +65,22 @@
     transform: scale(1);
   }
 } 
+
+@media (max-width: 768px) {
+  .logoContainer {
+    gap: 1rem;
+  }
+  .clientsSection {
+    padding: 2rem 1rem;
+  }
+  .logoWrapper {
+    flex: 0 1 100px;
+  }
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(.88rem, 2vw, 1.1rem);
+}

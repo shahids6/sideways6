@@ -47,8 +47,6 @@ const ContactForm = () => {
 
   return (
     <section className={styles.contactSection} id='contact'>
-      <div className={styles.curve1}></div>
-      <div className={styles.curve2}></div>
       <div className={styles.contactWrapper}>
         <div className={styles.leftSection}>
           <h2 className={styles.title}>Get in Touch</h2>
