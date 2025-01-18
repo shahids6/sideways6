@@ -22,7 +22,7 @@ const achievements = [
 const Achievements = () => {
   
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id='achievements'>
       {achievements.map((achievement, index) => (
         <div key={index} className={styles.achievementCard}>
           <img 
