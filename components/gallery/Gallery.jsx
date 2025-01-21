@@ -3,15 +3,25 @@ import styles from './Gallery.module.css';
 
 const images = [
   { id: 1, url: '/images/corporate-events.jpg', alt: 'Neon sign' },
-  { id: 2, url: '/images/corporate-events.jpg', alt: 'Portrait' },
-  { id: 3, url: '/images/corporate-events.jpg', alt: 'Foggy forest' },
-  { id: 4, url: '/images/corporate-events.jpg', alt: 'Dog portrait' },
-  { id: 5, url: '/images/corporate-events.jpg', alt: 'Coastal bridge' },
-  { id: 6, url: '/images/corporate-events.jpg', alt: 'City at night' },
-  { id: 7, url: '/images/corporate-events.jpg', alt: 'Sea turtle' },
+  { id: 2, url: "/images/services/TRADE SHOW & FAIRS, ETC.jpg", alt: 'Portrait' },
+  { id: 3, url: "/images/services/PUBLIC EVENTS.jpg", alt: 'Foggy forest' },
+  { id: 4, url:  "/images/services/PRODUCT LAUNCHES.jpg", alt: 'Dog portrait' },
+  { id: 5, url: "/images/services/MALL PROMOTIONS.jpg", alt: 'Coastal bridge' },
+  { id: 6, url: "/images/services/TRADE SHOW & FAIRS, ETC.jpg", alt: 'City at night' },
+  { id: 7, url:  "/images/services/PRODUCT LAUNCHES.jpg", alt: 'Sea turtle' },
   { id: 8, url: '/images/corporate-events.jpg', alt: 'Strawberries' },
-  { id: 9, url: '/images/corporate-events.jpg', alt: 'City bridge' },
-  { id: 10, url: '/images/corporate-events.jpg', alt: 'Aerial city view' },
+  { id: 9, url: "/images/services/PUBLIC EVENTS.jpg",alt: 'City bridge' },
+  { id: 10, url: "/images/services/MALL PROMOTIONS.jpg", alt: 'Aerial city view' },
+  { id: 1, url: '/images/corporate-events.jpg', alt: 'Neon sign' },
+  { id: 2, url: "/images/services/TRADE SHOW & FAIRS, ETC.jpg", alt: 'Portrait' },
+  { id: 3, url: "/images/services/PUBLIC EVENTS.jpg", alt: 'Foggy forest' },
+  { id: 4, url:  "/images/services/PRODUCT LAUNCHES.jpg", alt: 'Dog portrait' },
+  { id: 5, url: "/images/services/MALL PROMOTIONS.jpg", alt: 'Coastal bridge' },
+  { id: 6, url: "/images/services/TRADE SHOW & FAIRS, ETC.jpg", alt: 'City at night' },
+  { id: 7, url:  "/images/services/PRODUCT LAUNCHES.jpg", alt: 'Sea turtle' },
+  { id: 8, url: '/images/corporate-events.jpg', alt: 'Strawberries' },
+  { id: 9, url: "/images/services/PUBLIC EVENTS.jpg",alt: 'City bridge' },
+  { id: 10, url: "/images/services/MALL PROMOTIONS.jpg", alt: 'Aerial city view' },
 ];
 
 const Gallery = () => {
@@ -41,8 +51,8 @@ const Gallery = () => {
 
   return (
     <div className={styles['gallery-container']} id='gallery'>
-      <h2 className={styles['gallery-title']}>Photo Gallery</h2>
-      <p className={styles['gallery-subtitle']}>Capturing moments that tell your story</p>
+      <h2 className='title1' style={{textAlign: 'center'}}>Events Gallery</h2>
+      <p className='subTitle1' style={{textAlign: 'center'}}>Capturing moments that tell your story</p>
       
       <div className={styles['gallery-columns-container']}>
         {[column1, column2, column3].map((column, columnIndex) => (

@@ -4,50 +4,78 @@ import styles from './Approach.module.css'
 const Approach = () => {
   return (
     <section className={styles.approach}>
-         <div className={styles.backgroundGradient}></div>
-      <div className={styles.leftContent}>
-        <h2 className={styles.title}>Our Approach</h2>
-        <p className={styles.description}>
+      
+      {/* Header section */}
+      <div className={styles.header}>
+        <h2 className='title1'>Our Approach</h2>
+        <p className='subTitle1'>
           We are a creative powerhouse that builds beloved brands by delivering unique services and innovative events, all while staying true to client values and pushing the boundaries of excellence.
         </p>
       </div>
 
-      <div className={styles.timeline}>
-        <div className={styles.timelineItems}>
-          <TimelineItem 
-            number="1"
-            title="Attentive Ears"
-            description="We believe true communication lies in understanding what remains unspoken."
+      {/* First section */}
+      <div className={styles.contentRow}>
+        <div className={styles.leftContent}>
+          <h3>Attentive Ears</h3>
+          <p>We believe true communication lies in understanding what remains unspoken.</p>
+        </div>
+        <div className={styles.rightContent}  style={{flex: '0 0 55%'}}>
+          <img 
+            src="/images/services/CONFERENCES.jpg" 
+            alt="Attentive Ears"
+            className={styles.approachImage}
           />
-          <TimelineItem 
-            number="2"
-            title="Swift Enthusiasts"
-            description="We go above and beyond to bring ideas to life, ensuring swift execution from concept to completion."
+        </div>
+      </div>
+
+      {/* Second section */}
+      <div className={styles.contentRow}>
+        <div className={styles.leftContent}   style={{flex: '0 0 55%'}}>
+          <img 
+            src="/images/services/CORPORATE EVENTS.jpg" 
+            alt="Swift Enthusiasts"
+            height={510}
+            width={750}
+            className={styles.approachImage}
           />
-          <TimelineItem 
-            number="3"
-            title="Creative Fixers"
-            description="We understand that solving problems requires a fresh perspective, not the same mindset that created them."
+        </div>
+        <div className={styles.rightContent}>
+          <h3>Swift Enthusiasts</h3>
+          <p>We go above and beyond to bring ideas to life, ensuring swift execution from concept to completion.</p>
+        </div>
+      </div>
+
+      {/* Third section */}
+      <div className={styles.contentRow}>
+        <div className={styles.leftContent}>
+          <h3>Creative Fixers</h3>
+          <p>We understand that solving problems requires a fresh perspective, not the same mindset that created them.</p>
+        </div>
+        <div className={styles.rightContent}  style={{flex: '0 0 55%'}}>
+          <img 
+            src="/images/services/DEALERS MEET.jpg" 
+            alt="Creative Fixers"
+            className={styles.approachImage}
           />
-          <TimelineItem 
-            number="4"
-            title="Proficiency Pioneers"
-            description="Our expertise shines through in our innovative ideation and flawless execution, driven by a dedicated team of passionate professionals."
+        </div>
+      </div>
+
+      {/* Fourth section */}
+      <div className={styles.contentRow}>
+        <div className={styles.leftContent}  style={{flex: '0 0 55%'}}>
+          <img 
+            src="/images/services/PRODUCT LAUNCHES.jpg" 
+            alt="Proficiency Pioneers"
+            className={styles.approachImage}
           />
+        </div>
+        <div className={styles.rightContent}>
+          <h3>Proficiency Pioneers</h3>
+          <p>Our expertise shines through in our innovative ideation and flawless execution, driven by a dedicated team of passionate professionals.</p>
         </div>
       </div>
     </section>
   )
 }
-
-const TimelineItem = ({ number, title, description }) => (
-  <div className={styles.timelineItem}>
-    <div className={styles.numberCircle}>{number}</div>
-    <div className={styles.content}>
-      <h3 className={styles.itemTitle}>{title}</h3>
-      <p className={styles.itemDescription}>{description}</p>
-    </div>
-  </div>
-)
 
 export default Approach

@@ -1,25 +1,14 @@
 .services {
   padding: 4rem 2rem;
   background: white;
+  position: relative;
+  z-index: 2;
 }
 
 
 .headerSection {
   text-align: center;
   margin-bottom: 2rem;
-}
-
-.subtitle {
-  color: #666;
-  font-size: clamp(.88rem, 2vw, 1.1rem);
-} 
-
-.services h2 {
-  text-align: center;
-  font-size: clamp(2rem, 2.5vw, 3rem);
-  margin-bottom: clamp(1rem, 2vw, 3rem);
-  line-height: 1.2;
-  color: #333;
 }
 
 .servicesContainer {
@@ -31,8 +20,9 @@
 }
 
 .serviceCard {
-  height: 400px;
+  height: auto;
   border-radius: 20px;
+  background: linear-gradient(140deg, #1a4f9d, #002051);
   position: relative;
   background-size: cover;
   background-position: center;
@@ -56,43 +46,6 @@
 .serviceCard:hover {
   transform: translateY(-5px);
 }
-
-.overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 0.7) 50%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  padding: 2rem;
-  color: white;
-  transform: translateY(70%);
-  transition: transform 0.3s ease;
-}
-
-.serviceCard:hover .overlay {
-  transform: translateY(0);
-}
-
-.overlay h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.overlay p {
-  line-height: 1.6;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.serviceCard:hover .overlay p {
-  opacity: 1;
-}
-
 .cardContent {
   display: flex;
   gap: 2rem;
@@ -123,7 +76,6 @@
 
 .imageContent {
   flex: 1;
-  overflow: hidden;
   padding: 40px;
 }
 
@@ -160,10 +112,6 @@
 @media (max-width: 768px) {
   .services {
     padding: 2rem 1rem;
-  }
-  
-  .services h2 {
-    font-size: 2rem;
   }
   
   .serviceCard {

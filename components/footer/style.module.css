@@ -1,8 +1,9 @@
 .footer {
   background: white;
   padding: 4rem 0;
-  position: relative;
-  overflow: hidden;
+  position: sticky;
+  bottom: 0;
+  z-index: 0;
 }
 
 .container {
@@ -19,7 +20,7 @@
 }
 
 .logo img {
-  height: 40px;
+  height: 50px;
   /* Adjust size as needed */
 }
 
@@ -32,6 +33,7 @@
 .footerNav a {
   text-decoration: none;
   color: inherit;
+  font-size: clamp(.88rem, 2vw, 1.1rem);
 }
 
 .divider {
@@ -44,6 +46,7 @@
   max-width: 800px;
   margin: 2rem;
   line-height: 1.6;
+  font-size: clamp(.88rem, 2vw, 1.1rem);
 }
 
 .contactCards {
@@ -69,8 +72,8 @@
 
 .footerBottom {
   text-align: center;
-  margin-top: 4rem;
-  color: #666;
+  margin-top: 3rem;
+  color: #b3b1b1;
 } 
 
 @media (max-width: 768px) {

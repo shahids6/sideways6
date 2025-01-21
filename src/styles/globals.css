@@ -2,8 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,500&display=swap');
 
 :root {
-  --background: #eef3f3;;  /* Light mode background */
+  --background: #ffffff;;  /* Light mode background */
   --black: #3f4144;  /* Your existing text color */
+  --primary-color: #1a4f9d;
 }
 
 html,
@@ -21,6 +22,8 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: 'Raleway', sans-serif;
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
@@ -36,4 +39,58 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+
+.title1 {
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  margin-bottom: clamp(1rem, 1.5vw, 1.5rem);
+  line-height: 1.2;
+  color: #333;
+  transform: translate(-240px, 0px);
+  background-position-x: 100%;
+  background: linear-gradient(90deg, #3f4144 50%, #dce1e1 0);
+  background-size: 200% 100%;
+  background-position-x: 100%;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: titleSliding linear forwards;
+  animation-timeline: view(y);
+  animation-range: entry;
+  animation-range-end: 85vh;
+}
+
+@keyframes titleSliding {
+  to, 50% {
+    transform: translate(0px, 0px);
+    background-position-x: 45%;
+  }
+  100% {
+    background-position-x: 0%;
+  }
+}
+
+.subTitle1 {
+  font-size: clamp(.88rem, 3vw, 1.5rem);
+  line-height: 1.6;
+  max-width: 61%;
+  margin-inline: auto;
+  transform: translate(0%, 55%);
+  animation: leftSliding linear forwards;
+  animation-timeline: view(y);
+  animation-range: entry;
+  animation-range-end: 70vh;
+}
+
+@keyframes leftSliding {
+  to {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .subTitle1 {
+    max-width: 100%;
+  }
 }

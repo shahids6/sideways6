@@ -48,12 +48,12 @@ const Header = () => {
           </div>
 
           {/* Mobile Navigation Button */}
-          <button
+          {/* <button
             className="mobile-menu-button"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {/* {isOpen ? <X /> : <Menu />} */}
-          </button>
+            {isOpen ? <X /> : <Menu />}
+          </button> */}
         </div>
 
         {/* Mobile Menu */}
@@ -86,9 +86,9 @@ const Header = () => {
           width: 100%;
           z-index: 50;
           transition: all 0.3s;
-          background: transparent;
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(10px);
+          background: rgba(255, 255, 255, 0.7);
+          // backdrop-filter: blur(8px);
+          // -webkit-backdrop-filter: blur(10px);
         }
         .logo-mobile {
           display: none;
@@ -131,16 +131,12 @@ const Header = () => {
           color: var(--primary-color);
         }
 
-        .desktop-nav {
-          display: none;
-        }
-
         :global(.nav-link) {
           font-size: 0.875rem;
-          font-weight: 500;
+          font-weight: 600;
           text-decoration: none;
           transition: color 0.3s;
-          color: ${isScrolled ? 'black' : 'white'};
+          color: var(--primary-color);
         }
 
         .nav-link:hover {
@@ -181,6 +177,11 @@ const Header = () => {
         .mobile-nav-link:hover {
           color: var(--primary-color);
         }
+          .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+          }
 
         @media (max-width: 768px) {
           .mobile-menu-button {

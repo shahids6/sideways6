@@ -1,6 +1,8 @@
 .aboutSection {
     padding: 4rem 1rem;
     background-color: #f8f9fa;
+    position: relative;
+    z-index: 2;
   }
   
   .container {
@@ -21,14 +23,14 @@
   .textContent h2 {
     font-size: clamp(2rem, 3vw, 3rem);
     margin-bottom: clamp(1rem, 1.5vw, 1.5rem);
-    color: #626262;
+    color: var(--black);
   }
 
   .textContent span {
-    color: hsla(0, 0%, 27%, 0.4);
+    color: hsla(0, 0%, 0%, 0.4);
     background-clip: text;
     background-repeat: no-repeat;
-    background-image: linear-gradient(to right, #000, #000);
+    background-image: linear-gradient(to right, var(--primary-color), var(--primary-color));
     background-size: 0% 100%;
     animation: scroll-shine linear forwards;
     animation-timeline: view();

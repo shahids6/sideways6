@@ -4,6 +4,7 @@
   width: 100%;
   overflow: hidden;
   background-color: var(--background);
+  z-index: 2;
 }
 
 .imageBg {
@@ -14,6 +15,22 @@
   height: 100%;
   overflow: hidden;
   z-index: 0;
+}
+
+.videoBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.videoElement {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Dark overlay */
@@ -45,12 +62,15 @@
   font-weight: bold;
   margin-bottom: clamp(.7rem, 2vw, 1rem);
   line-height: 1.1;
-  color: var(--black);
+  color: white;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 .highlight {
   /* background: linear-gradient(180deg, white, #0066cc ); */
-  color: var(--black);
+  color: white;
   /* -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; */
 }
@@ -58,8 +78,12 @@
 .subtitle {
   font-size: clamp(1rem, 2.5vw, 1.3rem);
   margin-bottom: 2rem;
-  color: var(--black);
+  color: white;
   line-height: 1.2;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  transition-delay: 0.3s; /* Delays the subtitle animation to create a staggered effect */
 }
 
 .buttonGroup {
@@ -81,16 +105,16 @@
 }
 
 .primaryBtn {
-  background-color: transparent;
+  background-color: white;
   color: var(--black);
   /* border: none; */
-  border: 1px solid var(--black);
+  border: none;
 }
 
 .secondaryBtn {
   background-color: transparent;
-  color: var(--black);
-  border: 1px solid var(--black);
+  color: white;
+  border: 1px solid white;
 }
 
 .primaryBtn:hover, .secondaryBtn:hover {
@@ -118,7 +142,7 @@
 
 .scrollDown {
   position: absolute;
-  bottom: -2rem;
+  bottom: -4rem;
   left: 50%;
   transform: translateX(-50%);
   animation: bounce 2s infinite;
@@ -136,4 +160,9 @@
   60% {
     transform: translateX(-50%) translateY(-5px);
   }
+}
+
+.title.visible, .subtitle.visible {
+  opacity: 1;
+  transform: translateY(0);
 }

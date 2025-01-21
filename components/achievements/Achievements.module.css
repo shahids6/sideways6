@@ -1,9 +1,11 @@
 .container {
   padding: 8rem 2rem;
-  padding-top: 1rem;
   display: flex;
   justify-content: center;
   gap: 2rem;
+  background: var(--background);
+  position: relative;
+  z-index: 2;
 }
 
 .achievementCard {
@@ -18,7 +20,7 @@
   flex-direction: column;
   justify-content: center;
   color: white;
-  transform: translateY(-130px);
+  transform: translateY(-200px);
   width: 80px;
   height: 20px;
   border-radius: 100px;

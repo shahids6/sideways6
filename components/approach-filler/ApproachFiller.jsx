@@ -5,7 +5,7 @@ const ApproachFiller = () => {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <h2 className={styles.title}>We Create Event Solutions With</h2>
+        <h2 className='title1' style={{textAlign: 'center'}}>We Create Event <br /> Solutions With</h2>
         
         <div className={styles.grid}>
           {/* Ideation */}

@@ -10,7 +10,7 @@ const achievements = [
     { 
       number: '60+', 
       label: 'Successful Activations',
-      image: '/images/activation.avif' // Wedding ceremony setup image
+      image: '/images/services/BTL ACTIVATIONS.jpg' // Wedding ceremony setup image
     },
     { 
       number: '50+', 

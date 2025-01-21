@@ -1,6 +1,8 @@
 .gallery-container {
   padding: 2rem;
   background-color: white;
+  position: relative;
+  z-index: 2;
 }
 
 .gallery-title {
@@ -129,18 +131,19 @@
   gap: 20px;
   height: 80vh;
   overflow: hidden;
+  margin-top: clamp(1.5rem, 4vw, 3rem);
   mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    black 30%,
-    black 70%,
+    black 20%,
+    black 80%,
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    black 30%,
-    black 70%,
+    black 20%,
+    black 80%,
     transparent 100%
   );
 }

@@ -1,180 +1,98 @@
 .approach {
-  background-color: white;
-  padding: 4rem 2rem;
-  display: flex;
-  gap: 3rem;
-  max-width: 1260px;
-  margin: 0 auto;
+  padding: 4rem 1rem;
   position: relative;
+  max-width: 1968px;
+  margin: auto;
+  z-index: 2;
+  background: var(--background);
 }
 
-.backgroundGradient {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  /* background: radial-gradient(
-    circle at center,
-    rgba(0, 102, 204, 1) 0%,
-    rgba(255, 255, 255, 0.9) 60%,
-    rgba(255, 255, 255, 1) 100%
-  ); */
-  z-index: 0;
+.header {
+  margin-bottom: 4rem;
+  text-align: center;
 }
 
-.leftContent {
-  flex: 0 0 50%;
-  position: sticky;
-  top: 125px;
-  height: fit-content;
-  align-self: flex-start;
-  z-index: 1;
-  background-color: white;
-}
-
-.title {
-  font-size: clamp(2rem, 3vw, 3rem);
-  margin-bottom: clamp(1rem, 1.5vw, 1.5rem);
-  color: #333;
-}
-
-.description {
-  font-size: clamp(.88rem, 1.1vw, 1.1rem);
-  line-height: 1.6;
-}
-
-.timeline {
-  flex: 2;
-  position: relative;
-}
-
-.timelineItems {
-  position: relative;
-  padding-left: 60px;
-}
-
-.timelineItems::before {
-  content: '';
-  position: absolute;
-  left: 25px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: radial-gradient(circle at center, 
-    rgba(0, 102, 204, 0.8) 0%,
-    rgba(0, 102, 204, 0.8) 49%,
-    transparent 50%) 0 0/4px 4px repeat-y;
-  z-index: 1;
-}
-
-.timelineItem {
-  gap: 2rem;
-  margin-bottom: 3rem;
-  position: relative;
-}
-
-.numberCircle {
-  position: absolute;
-  left: -60px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: white;
-  color: #0066cc;
+.contentRow {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-  z-index: 2;
-  /* Gradient border effect */
-  border: 2px solid transparent;
-  background-image: linear-gradient(white, white), 
-                    linear-gradient(90deg, #0066cc 0%, #0066cc 50%, transparent 50%);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-  /* Inset shadow for depth */
-  box-shadow: inset -4px -4px 8px rgba(0, 102, 204, 0.2),
-              0 0 0 8px rgba(0, 102, 204, 0.1);
+  gap: 4rem;
+  margin: 6rem 0;
 }
 
-.content {
-  flex: 0 0 50%;
-  width: 441px;
-    height: 210px;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  color: white;
-  margin-left: 2rem;
+.leftContent,
+.rightContent {
+  flex: 1;
+}
 
-  transform: perspective(1200px) rotateX(50deg);
-  animation: perspectives linear forwards;
+.leftContent h3,
+.rightContent h3 {
+  font-size: clamp(1.5rem, 4.5vw, 3rem);
+  margin-bottom: clamp(0.88rem, 1.5vw, 1rem);
+}
+
+.leftContent p,
+.rightContent p {
+  font-size: clamp(.88rem, 3vw, 1.5rem);
+  line-height: 1.6;
+}
+
+.approachImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5rem;
+  object-fit: cover;
+}
+
+
+.leftContent {
+  height: fit-content;
+}
+
+.rightContent img {
+  transform: translate(369.5px, 0px) rotate(10deg);
+  animation: sliding linear forwards;
   animation-timeline: view(y);
   animation-range: entry;
-  animation-range-end: 40vh;
+  animation-range-end: 75vh;
 }
 
-.content:hover {
-  transform: translateY(-5px);
+.leftContent img {
+  transform: translate(-369.5px, 0px) rotate(-10deg);
+  animation: leftSliding linear forwards;
+  animation-timeline: view(y);
+  animation-range: entry;
+  animation-range-end: 75vh;
 }
 
-.itemTitle {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  color: white;
-  font-weight: 600;
+.contentRow h3,
+.contentRow p {
+  transform: translate(0%, 55%);
+  animation: downToUp linear forwards;
+  animation-timeline: view(y);
+  animation-range: entry;
+  animation-range-end: 75vh;
 }
 
-.itemDescription {
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.6;
-  font-size: 1rem;
-  overflow-wrap: break-word;
-}
-
-/* Dotted line connecting to boxes */
-.timelineItem::before {
-  content: '';
-  position: absolute;
-  left: -35px;
-  top: 25px;
-  width: 100px;
-  height: 2px;
-  background: linear-gradient(to right, 
-    #0066cc 0%, 
-    #0066cc 50%, 
-    transparent 50%, 
-    transparent 100%);
-  background-size: 6px 1px;
-  background-repeat: repeat-x;
-  z-index: 1;
-}
-
-/* Individual gradient backgrounds for each box */
-.timelineItem:nth-child(1) .content {
-  background: linear-gradient(to right bottom, rgb(168, 85, 247), rgb(79, 70, 229)); /* purple-500 to indigo-600 */
-}
-
-.timelineItem:nth-child(2) .content {
-  background: linear-gradient(to right bottom, rgb(6, 182, 212), rgb(37, 99, 235)); /* from-cyan-500 to-blue-600 */
-}
-
-.timelineItem:nth-child(3) .content {
-  background: linear-gradient(to right bottom, rgb(34, 197, 94), rgb(5, 150, 105)); /* green-500 to emerald-600 */
-}
-
-.timelineItem:nth-child(4) .content {
-  background: linear-gradient(to right bottom, rgb(139, 92, 246), rgb(147, 51, 234)); /* from-violet-500 to-purple-600 */
-} 
-
-.timelineItem:nth-child(4) {
+.contentRow:last-child {
   margin-bottom: 0;
+}
+
+@keyframes downToUp {
+  to {
+    transform: translate(0%, -5%);
+  }
+}
+
+@keyframes sliding {
+  to {
+    transform: translate(0%, -5%);
+  }
+}
+
+@keyframes leftSliding {
+  to {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
 }
 
 @media (max-width: 768px) {
@@ -184,7 +102,7 @@
   }
   .leftContent {
     position: relative;
-    top: unset
+    top: unset;
   }
   .numberCircle {
     width: 30px;
@@ -195,7 +113,18 @@
     width: 100%;
     height: 100%;
   }
-
+  .contentRow {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .contentRow:nth-child(odd) {
+    flex-direction: column;
+  }
+  
+  .contentRow:nth-child(even) {
+    flex-direction: column-reverse;
+  }
 }
 @keyframes perspectives {
   to {

@@ -2,7 +2,7 @@
   padding: 4rem 1rem;
   background: #fff;
   position: relative;
-  overflow: hidden;
+  z-index: 2;
 }
 
 
@@ -10,9 +10,9 @@
   max-width: 1200px;
   margin-inline: auto;
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  background: #2c2c2c;
+  background: linear-gradient(140deg, #1a4f9d, #002051);
   border-radius: 20px;
   padding: 3rem;
   position: relative;
@@ -23,7 +23,7 @@
 
 
 .contactWrapper:has(.rightSection:hover) {
-  grid-template-columns: 1fr 1.7fr;
+  grid-template-columns: 1fr 1.1fr;
 }
 
 .leftSection {
@@ -33,12 +33,11 @@
 }
 
 .leftSection:hover {
-  scale: 1.09;
+  scale: 1.01;
 }
 
 .title {
   font-size: clamp(2rem, 3vw, 3rem);
-  margin-bottom: clamp(.5rem, 2vw, 1rem);
   color: #fff;
 }
 
@@ -56,7 +55,7 @@
 }
 
 .inputGroup label {
-  font-size: clamp(.88rem, 2vw, 1.1rem);
+  font-size: clamp(.88rem, 2vw, 1rem);
   font-weight: 500;
   color: #fff;
 }
@@ -93,7 +92,7 @@
 }
 
 .submitButton {
-  background: linear-gradient(135deg, #4A90E2 0%, #7E57C2 100%);
+  background: linear-gradient(135deg, #2083f7 0%, #84b3ff 100%);
   border: none;
   color: white;
   padding: 16px 24px;
@@ -106,7 +105,7 @@
 }
 
 .submitButton:hover {
-  background: linear-gradient(135deg, #7E57C2 0%, #4A90E2 100%);
+  background: linear-gradient(135deg, #2083f7 0%, #84b3ff 100%);
 
 }
 
@@ -124,4 +123,70 @@
   .contactSection {
     padding: 3rem 1rem;
   }
+}
+
+.contactInfo {
+  margin-top: 2rem;
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: .8rem;
+  margin-bottom: 1rem;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: #fff;
+  margin-top: 3px;
+}
+
+.contactItem p, 
+.contactItem a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.contactItem a:hover {
+  text-decoration: underline;
+}
+
+.divider {
+  width: 100%;
+  border: none;
+  border-top: .5px solid rgba(251, 251, 251, .5);
+  margin: 1.5rem 0;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  transition: background-color 0.3s ease;
+}
+
+.socialLink:hover {
+  background-color: #e0e0e0;
+}
+
+.socialLink .icon {
+  width: 24px;
+  height: 24px;
+  color:  #0f3d7f;
 } 

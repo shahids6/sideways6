@@ -22,7 +22,7 @@ const Services = () => {
       ],
       bgImage:
         "https://ortcoin.org/wp-content/uploads/2024/03/customer-support-box-2.webp",
-      contentImage: "/images/corporate-events.jpg",
+      contentImage: "/images/services/AWARD CEREMONIES.jpg",
     },
     {
       title: "Brand Activations & Promotions",
@@ -37,7 +37,7 @@ const Services = () => {
       ],
       bgImage:
         "https://ortcoin.org/wp-content/uploads/2024/03/Customer-support-software-Support-BG-2.webp",
-      contentImage: "/images/corporate-events.jpg",
+      contentImage: "/images/services/MALL PROMOTIONS.jpg",
     },
     {
       title: "Product & Brand Launches",
@@ -49,7 +49,7 @@ const Services = () => {
       ],
       bgImage:
         "https://ortcoin.org/wp-content/uploads/2024/03/customer-support-box-2.webp",
-      contentImage: "/images/corporate-events.jpg",
+      contentImage: "/images/services/PRODUCT LAUNCHES.jpg",
     },
     {
       title: "Public & Sports Events",
@@ -61,7 +61,7 @@ const Services = () => {
       ],
       bgImage:
         "https://ortcoin.org/wp-content/uploads/2024/03/customer-support-box-2.webp",
-      contentImage: "/images/corporate-events.jpg",
+      contentImage: "/images/services/PUBLIC EVENTS.jpg",
     },
     {
       title: "Exhibitions & Displays",
@@ -73,7 +73,7 @@ const Services = () => {
       ],
       bgImage:
         "https://ortcoin.org/wp-content/uploads/2024/03/customer-support-box-2.webp",
-      contentImage: "/images/corporate-events.jpg",
+      contentImage: "/images/services/TRADE SHOW & FAIRS, ETC.jpg",
     },
     // ... other services remain the same, just change 'image' to 'bgImage'
   ];
@@ -100,15 +100,14 @@ const Services = () => {
   return (
     <section className={styles.services} id='services'>
       <div className={styles.headerSection}>
-        <h2>Our Services</h2>
-        <p className={styles.subtitle}>Comprehensive Solutions, Seamless Experiences</p>
+        <h2 className='title1'>Our Services</h2>
+        <p className='subTitle1'>Comprehensive Solutions, Seamless Experiences</p>
       </div>
       <div className={styles.servicesContainer}>
         {services.map((service, index) => (
           <div
             key={index}
             className={styles.serviceCard}
-            style={{ backgroundImage: `url(${service.bgImage})` }}
           >
             <div className={`${styles.cardContent} ${index % 2 !== 0 ? styles.reverse : ''}`}>
               <div className={styles.textContent}>
