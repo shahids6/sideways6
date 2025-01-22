@@ -21,12 +21,11 @@
   }
   
   .textContent h2 {
-    font-size: clamp(2rem, 3vw, 3rem);
     margin-bottom: clamp(1rem, 1.5vw, 1.5rem);
-    color: var(--black);
+    /* color: var(--black); */
   }
 
-  .textContent span {
+  /* .textContent span {
     color: hsla(0, 0%, 0%, 0.4);
     background-clip: text;
     background-repeat: no-repeat;
@@ -35,12 +34,12 @@
     animation: scroll-shine linear forwards;
     animation-timeline: view();
 
-  }
+  } */
 
-  .textContent h2 span {
+  /* .textContent h2 span {
     animation-range-start: cover 20vh;
     animation-range-end: cover 30vh;
-  }
+  } */
   .textContent .aboutText1 span {
     animation-range-start: cover 22.5vh;
     animation-range-end: cover 42vh;
@@ -63,7 +62,7 @@
   }
 
   .textContent p {
-    font-size: clamp(.88rem, 1.1vw, 1.1rem);
+    font-size: clamp(.88rem, 3vw, 1.25rem);
     line-height: 1.6;
     color: #666;
     margin-bottom: 1rem;
@@ -121,4 +120,34 @@
       text-align: left;
     }
   }
+  
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.aboutText1, .aboutText2 {
+  opacity: 0;
+}
+
+.aboutText1.show {
+  animation: slideUp 1s ease forwards;
+  animation-timeline: view(y);
+  animation-range-start: cover 22.5vh;
+  animation-range-end: cover 42vh;
+}
+
+.aboutText2.show {
+  animation: slideUp 1s ease forwards;
+  animation-delay: 0.2s;
+  animation-timeline: view(y);
+  animation-range-start: cover 26vh;
+  animation-range-end: cover 67vh;
+}
   

@@ -43,7 +43,7 @@ a {
 
 
 .title1 {
-  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
   margin-bottom: clamp(1rem, 1.5vw, 1.5rem);
   line-height: 1.2;
   color: #333;
@@ -72,7 +72,7 @@ a {
 }
 
 .subTitle1 {
-  font-size: clamp(.88rem, 3vw, 1.5rem);
+  font-size: clamp(.88rem, 3vw, 1.25rem);
   line-height: 1.6;
   max-width: 61%;
   margin-inline: auto;

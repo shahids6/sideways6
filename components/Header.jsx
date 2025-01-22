@@ -5,6 +5,40 @@ import Link from 'next/link';
 import Image from 'next/image';
 import brandLogo from '../public/brand-logo.svg';
 
+// Add these SVG components at the top of the file
+const MenuIcon = () => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <line x1="3" y1="12" x2="21" y2="12" />
+    <line x1="3" y1="6" x2="21" y2="6" />
+    <line x1="3" y1="18" x2="21" y2="18" />
+  </svg>
+);
+
+const CloseIcon = () => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <line x1="18" y1="6" x2="6" y2="18" />
+    <line x1="6" y1="6" x2="18" y2="18" />
+  </svg>
+);
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,22 +82,21 @@ const Header = () => {
           </div>
 
           {/* Mobile Navigation Button */}
-          {/* <button
+          <button
             className="mobile-menu-button"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X /> : <Menu />}
-          </button> */}
+            <div className="icon-container">
+              <div className={`icon ${isOpen ? 'open' : ''}`}>
+                {isOpen ? <CloseIcon /> : <MenuIcon />}
+              </div>
+            </div>
+          </button>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="mobile-menu"
-          >
+          <div className="mobile-menu">
             <div className="mobile-menu-items">
               {navItems.map((item) => (
                 <Link
@@ -76,7 +109,7 @@ const Header = () => {
                 </Link>
               ))}
             </div>
-          </motion.div>
+          </div>
         )}
       </nav>
 
@@ -143,11 +176,30 @@ const Header = () => {
           color: var(--primary-color);
         }
 
+        .icon-container {
+          position: relative;
+          width: 24px;
+          height: 24px;
+        }
+
+        .icon {
+          position: absolute;
+          top: 0;
+          left: 0;
+          transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .icon.open {
+          transform: rotate(90deg);
+        }
+
         .mobile-menu-button {
-          display: block;
+          display: none;
           background: none;
           border: none;
           cursor: pointer;
+          padding: 8px;
+          color: var(--primary-color);
         }
 
         .mobile-menu {
@@ -185,7 +237,7 @@ const Header = () => {
 
         @media (max-width: 768px) {
           .mobile-menu-button {
-            display: none;
+            display: block;
           }
 
           nav {
