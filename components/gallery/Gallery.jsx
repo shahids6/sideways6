@@ -34,10 +34,12 @@ const Gallery = () => {
   const column3 = images.slice(14, 21);
 
   const handleImageClick = (index) => {
+    document.querySelector('body').style.overflowY = 'hidden'
     setSelectedImage(index);
   };
 
   const handleClose = () => {
+    document.querySelector('body').style.overflowY = 'unset'
     setSelectedImage(null);
   };
 

@@ -2,7 +2,7 @@
   padding: 4rem 1rem;
   background: #fff;
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
 
@@ -55,7 +55,7 @@
 }
 
 .inputGroup label {
-  font-size: clamp(.88rem, 2vw, 1rem);
+  font-size: clamp(.8rem, 2vw, 1rem);
   font-weight: 500;
   color: #fff;
 }
@@ -126,7 +126,7 @@
 }
 
 .contactInfo {
-  margin-top: 2rem;
+  margin-top: clamp(1rem, 2.5vw, 2rem);
 }
 
 .contactItem {
@@ -141,16 +141,18 @@
   height: 24px;
   flex-shrink: 0;
   color: #fff;
-  margin-top: 3px;
+  margin-top: 2px;
+
 }
 
 .contactItem p, 
 .contactItem a {
   color: #fff;
   text-decoration: none;
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: clamp(.88rem, 2vw, 1rem);
+  line-height: 1.5;
   margin: 0;
+  text-align: left;
 }
 
 .contactItem a:hover {
@@ -161,7 +163,7 @@
   width: 100%;
   border: none;
   border-top: .5px solid rgba(251, 251, 251, .5);
-  margin: 1.5rem 0;
+  margin-block: clamp(.5rem, 2vw, 1.5rem);
 }
 
 .socialIcons {
@@ -190,3 +192,14 @@
   height: 24px;
   color:  #0f3d7f;
 } 
+
+@media (max-width: 578px) {
+  .socialLink {
+    width: 30px;
+    height: 30px;
+  }
+  .socialLink .icon {
+    width: 20px;
+    height: 20px;
+  }
+}

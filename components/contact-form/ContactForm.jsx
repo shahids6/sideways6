@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './style.module.css';
+import toast, { Toaster } from 'react-hot-toast';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -30,11 +31,28 @@ const ContactForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      // Add your form submission logic here
-      console.log(formData);
+        const formData = new FormData(event.target);
+    
+        formData.append("access_key", "3f622f6e-9f68-4631-a0d4-f427e752462b");
+    
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+    
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+          body: json
+        }).then((res) => res.json());
+    
+        if (res.success) {
+          toast.success("Message sent successfully");
+        }
     }
   };
 
@@ -47,6 +65,7 @@ const ContactForm = () => {
 
   return (
     <section className={styles.contactSection} id='contact'>
+      <Toaster position="bottom-left" />
       <div className={styles.contactWrapper}>
         <div className={styles.leftSection}>
           <h2 className={styles.title}>Get in Touch</h2>
