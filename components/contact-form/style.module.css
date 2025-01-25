@@ -123,6 +123,9 @@
   .contactSection {
     padding: 3rem 1rem;
   }
+  .contactWrapper:has(.rightSection:hover) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .contactInfo {

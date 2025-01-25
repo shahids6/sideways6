@@ -75,7 +75,9 @@
   text-align: center;
   margin-top: 3rem;
   color: #b3b1b1;
+  font-size: clamp(.6rem, 2vw, 1rem);;
 } 
+
 
 @media (max-width: 768px) {
   .footerHeader {

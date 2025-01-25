@@ -136,11 +136,13 @@
     gap: 0px;
   }
   .textContent {
-    padding: 1rem 1rem 0 1rem;
+    padding: 0rem 1rem 1rem 1rem;
+    order: 2;
   }
   .imageContent {
     padding: 1rem;
     height: 200px;
+    order: 1;
   }
 } 
 
