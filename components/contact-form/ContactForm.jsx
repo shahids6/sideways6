@@ -101,12 +101,12 @@ const ContactForm = () => {
           <hr className={styles.divider} />
           
           <div className={styles.socialIcons}>
-            <a href="https://facebook.com/your-page" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+            <a href="https://www.facebook.com/Sideways6.in" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
               <svg className={styles.icon} viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/>
               </svg>
             </a>
-            <a href="https://instagram.com/your-profile" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+            <a href="https://www.instagram.com/eventsbysideways6/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
               <svg className={styles.icon} viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5" strokeWidth="2"/>
                 <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/>

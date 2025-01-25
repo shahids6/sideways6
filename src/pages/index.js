@@ -18,7 +18,7 @@ export default function Home() {
         <title>Sideways 6</title>
         <meta name="description" content="Sideways 6, a division of AD6 Advertising, specializes in innovative event planning and brand building. Driven by creativity and excellence, we craft unique experiences that captivate audiences and strengthen brand identities." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="shortcut icon" href="../public/brand-logo.svg" />
+        <link rel="shortcut icon" href="favIcon.svg" />
       </Head>
       <Header />
       <main>
