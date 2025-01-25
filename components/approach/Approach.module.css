@@ -44,56 +44,26 @@
   object-fit: cover;
 }
 
-
 .leftContent {
   height: fit-content;
 }
 
 .rightContent img {
-  transform: translate(369.5px, 0px) rotate(10deg);
-  animation: sliding linear forwards;
-  animation-timeline: view(y);
-  animation-range: entry;
-  animation-range-end: 75vh;
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5rem;
+  object-fit: cover;
 }
 
 .leftContent img {
-  transform: translate(-369.5px, 0px) rotate(-10deg);
-  animation: leftSliding linear forwards;
-  animation-timeline: view(y);
-  animation-range: entry;
-  animation-range-end: 75vh;
-}
-
-.contentRow h3,
-.contentRow p {
-  transform: translate(0%, 55%);
-  animation: downToUp linear forwards;
-  animation-timeline: view(y);
-  animation-range: entry;
-  animation-range-end: 75vh;
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5rem;
+  object-fit: cover;
 }
 
 .contentRow:last-child {
   margin-bottom: 0;
-}
-
-@keyframes downToUp {
-  to {
-    transform: translate(0%, -5%);
-  }
-}
-
-@keyframes sliding {
-  to {
-    transform: translate(0%, -5%);
-  }
-}
-
-@keyframes leftSliding {
-  to {
-    transform: translate(0px, 0px) rotate(0deg);
-  }
 }
 
 @media (max-width: 768px) {

@@ -1,9 +1,71 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import styles from './Approach.module.css'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/dist/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Approach = () => {
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    const contentRows = section.querySelectorAll(`.${styles.contentRow}`)
+
+    contentRows.forEach((row, index) => {
+      const img = row.querySelector('img')
+      const text = row.querySelectorAll('h3, p')
+      const isEven = index % 2 === 0
+
+      // Initial states
+      gsap.set(img, {
+        x: isEven ? 369.5 : -369.5,
+        rotation: isEven ? 10 : -10,
+      })
+      gsap.set(text, {
+        y: '55%',
+        opacity: 0,
+      })
+
+      // Create animation
+      gsap.to(img, {
+        x: 0,
+        y: '-5%',
+        rotation: 0,
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: row,
+          start: 'top 75%',
+          end: 'top 25%',
+          scrub: 5,
+        },
+      })
+
+      // Text animation
+      gsap.to(text, {
+        y: '-5%',
+        opacity: 1,
+        duration: 1,
+        ease: 'power2.out',
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: row,
+          start: 'top 75%',
+          end: 'top 25%',
+          scrub: 1,
+        },
+      })
+    })
+
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    }
+  }, [])
+
   return (
-    <section className={styles.approach}>
+    <section className={styles.approach} ref={sectionRef}>
       
       {/* Header section */}
       <div className={styles.header}>
