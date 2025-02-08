@@ -47,28 +47,14 @@ a {
   margin-bottom: clamp(1rem, 1.5vw, 1.5rem);
   line-height: 1.2;
   color: #333;
-  transform: translate(-140px, 0px);
-  background-position-x: 100%;
   background: linear-gradient(90deg, #3f4144 50%, #dce1e1 0);
   background-size: 200% 100%;
   background-position-x: 100%;
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
-  animation: titleSliding linear forwards;
-  animation-timeline: view(y);
-  animation-range: entry;
-  animation-range-end: 85vh;
-}
-
-@keyframes titleSliding {
-  to, 50% {
-    transform: translate(0px, 0px);
-    background-position-x: 45%;
-  }
-  100% {
-    background-position-x: 0%;
-  }
+  transform: translateX(-100px);
+  background-position-x: 100%;
 }
 
 .subTitle1 {
@@ -76,17 +62,8 @@ a {
   line-height: 1.6;
   max-width: 61%;
   margin-inline: auto;
-  transform: translate(0%, 55%);
-  animation: leftSliding linear forwards;
-  animation-timeline: view(y);
-  animation-range: entry;
-  animation-range-end: 70vh;
-}
-
-@keyframes leftSliding {
-  to {
-    transform: translate(0px, 0px) rotate(0deg);
-  }
+  opacity: 0;
+  transform: translateY(55%);
 }
 
 @media (max-width: 768px) {

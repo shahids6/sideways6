@@ -1,76 +1,76 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import styles from './Approach.module.css'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
+import { useTitleAnimation } from '../../utils/animations'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const Approach = () => {
   const sectionRef = useRef(null)
+  const { titleRef, subtitleRef } = useTitleAnimation()
 
-  useEffect(() => {
-    const section = sectionRef.current
-    const contentRows = section.querySelectorAll(`.${styles.contentRow}`)
+  useGSAP(() => {
+    const isMobile = window.innerWidth <= 768
 
+    // Content rows animations
+    const contentRows = sectionRef.current.querySelectorAll(`.${styles.contentRow}`)
+    
     contentRows.forEach((row, index) => {
       const img = row.querySelector('img')
       const text = row.querySelectorAll('h3, p')
       const isEven = index % 2 === 0
 
-      // Initial states
+      // Set initial states
       gsap.set(img, {
-        x: isEven ? 369.5 : -369.5,
+        x: isEven ? (isMobile ? 170 : 369.5) : (isMobile ? -170 : -369.5),
         rotation: isEven ? 10 : -10,
+        opacity: 0
       })
       gsap.set(text, {
-        y: '55%',
-        opacity: 0,
+        y: 50,
+        opacity: 0
       })
 
-      // Create animation
-      gsap.to(img, {
-        x: 0,
-        y: '-5%',
-        rotation: 0,
-        duration: 1,
-        ease: 'power2.out',
+      // Create timeline for each row
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: row,
-          start: 'top 75%',
-          end: 'top 25%',
-          scrub: 5,
-        },
+          start: "top bottom",
+          end: "center center",
+          toggleActions: "restart pause reverse pause"
+        }
       })
 
-      // Text animation
-      gsap.to(text, {
-        y: '-5%',
+      tl.to(img, {
+        x: 0,
+        rotation: 0,
         opacity: 1,
         duration: 1,
-        ease: 'power2.out',
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: row,
-          start: 'top 75%',
-          end: 'top 25%',
-          scrub: 1,
-        },
+        ease: "power2.out"
       })
+      .to(text, {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power2.out"
+      }, "-=0.5")
     })
 
-    // Cleanup function
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill())
     }
-  }, [])
+  }, { scope: sectionRef })
 
   return (
     <section className={styles.approach} ref={sectionRef}>
       
       {/* Header section */}
       <div className={styles.header}>
-        <h2 className='title1'>Our Approach</h2>
-        <p className='subTitle1'>
+        <h2 className='title1' ref={titleRef}>Our Approach</h2>
+        <p className='subTitle1' ref={subtitleRef}>
           We are a creative powerhouse that builds beloved brands by delivering unique services and innovative events, all while staying true to client values and pushing the boundaries of excellence.
         </p>
       </div>

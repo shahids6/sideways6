@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Clients.module.css';
 import Image from 'next/image';
+import { useTitleAnimation } from '../../utils/animations';
 
 const Clients = () => {
   const [logos, setLogos] = useState([
@@ -26,6 +27,7 @@ const Clients = () => {
     '/images/clients/20.png',
   ]);
   const [visibleLogos, setVisibleLogos] = useState([]);
+  const { titleRef } = useTitleAnimation();
 
   useEffect(() => {
     // Shuffle logos when component mounts
@@ -70,7 +72,7 @@ const Clients = () => {
 
   return (
     <section className={styles.clientsSection}>
-      <h2 className='title1'>Our Prestigious Clients</h2>
+      <h2 className='title1' ref={titleRef}>Our Prestigious Clients</h2>
       <p className='subTitle1'>Partnering with industry leaders across the globe</p>
       <div className={styles.logoContainer}>
         {logos.map((logo, index) => (

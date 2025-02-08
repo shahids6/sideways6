@@ -2,7 +2,8 @@
   padding: 4rem 2rem;
   background: white;
   position: relative;
-  z-index: 2;
+  z-index: 5;
+  overflow-x: hidden;
 }
 
 

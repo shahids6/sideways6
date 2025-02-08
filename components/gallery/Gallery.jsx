@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './Gallery.module.css';
+import { useTitleAnimation } from '../../utils/animations';
 
 const images = [
   { id: 1, url: '/images/corporate-events.jpg', alt: 'Neon sign' },
@@ -27,6 +28,7 @@ const images = [
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [pausedColumn, setPausedColumn] = useState(null);
+  const { titleRef, subtitleRef } = useTitleAnimation();
   
   // Split images into 3 columns
   const column1 = images.slice(0, 7);
@@ -53,8 +55,8 @@ const Gallery = () => {
 
   return (
     <div className={styles['gallery-container']} id='gallery'>
-      <h2 className='title1' style={{textAlign: 'center'}}>Events Gallery</h2>
-      <p className='subTitle1' style={{textAlign: 'center'}}>Capturing moments that tell your story</p>
+      <h2 className='title1' style={{textAlign: 'center'}} ref={titleRef}>Events Gallery</h2>
+      <p className='subTitle1' style={{textAlign: 'center'}} ref={subtitleRef}>Capturing moments that tell your story</p>
       
       <div className={styles['gallery-columns-container']}>
         {[column1, column2, column3].map((column, columnIndex) => (

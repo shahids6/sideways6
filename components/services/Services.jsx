@@ -1,13 +1,61 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./Services.module.css";
 import Image from "next/image";
-// import corporateImg from '/images/corporate-events.jpg' // Add your background images
-// import brandImg from '../../assets/brand-activations.jpg'
-// import productImg from '../../assets/product-launches.jpg'
-// import sportsImg from '../../assets/sports-events.jpg'
-// import exhibitionImg from '../../assets/exhibitions.jpg'
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useGSAP } from '@gsap/react'
+import { useTitleAnimation } from "../../utils/animations";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Services = () => {
+  const servicesRef = useRef(null);
+  const { titleRef, subtitleRef } = useTitleAnimation();
+
+  useGSAP(() => {
+    // Header animation
+    gsap.from(`.${styles.headerSection}`, {
+      y: 100,
+      opacity: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: `.${styles.headerSection}`,
+        start: "top bottom",
+        end: "top center",
+        toggleActions: "play none none reverse"
+      }
+    })
+
+    // Service cards animations
+    const cards = servicesRef.current.querySelectorAll(`.${styles.serviceCard}`)
+    
+    cards.forEach((card, index) => {
+      gsap.set(card, {
+        y: 100,
+        opacity: 0,
+        scale: 0.8
+      })
+
+      gsap.to(card, {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: card,
+          start: "top bottom",
+          end: "top center",
+          toggleActions: "play none none reverse"
+        }
+      })
+    })
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    }
+  }, { scope: servicesRef })
+
   const services = [
     {
       title: "Corporate Events",
@@ -42,7 +90,7 @@ const Services = () => {
     {
       title: "Product & Brand Launches",
       description:
-        "Launch your products with precision and creativity. We ensure your brand’s big moment is impactful, memorable, and perfectly aligned with your goals.",
+        "Launch your products with precision and creativity. We ensure your brand's big moment is impactful, memorable, and perfectly aligned with your goals.",
       bulletPoints: [
         "Product Launches",
         "Inaugurations",
@@ -100,10 +148,10 @@ const Services = () => {
   return (
     <section className={styles.services} id='services'>
       <div className={styles.headerSection}>
-        <h2 className='title1'>Our Services</h2>
-        <p className='subTitle1'>Comprehensive Solutions, Seamless Experiences</p>
+        <h2 className='title1' ref={titleRef}>Our Services</h2>
+        <p className='subTitle1' ref={subtitleRef}>Comprehensive Solutions, Seamless Experiences</p>
       </div>
-      <div className={styles.servicesContainer}>
+      <div className={styles.servicesContainer} ref={servicesRef}>
         {services.map((service, index) => (
           <div
             key={index}
