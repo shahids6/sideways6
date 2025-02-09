@@ -53,8 +53,9 @@ a {
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
+  opacity: 0;
   transform: translateX(-100px);
-  background-position-x: 100%;
+  will-change: transform, opacity;
 }
 
 .subTitle1 {
@@ -64,6 +65,7 @@ a {
   margin-inline: auto;
   opacity: 0;
   transform: translateY(55%);
+  will-change: transform, opacity;
 }
 
 @media (max-width: 768px) {

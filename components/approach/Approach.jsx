@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import styles from './Approach.module.css'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
@@ -12,57 +12,65 @@ const Approach = () => {
   const { titleRef, subtitleRef } = useTitleAnimation()
 
   useGSAP(() => {
-    const isMobile = window.innerWidth <= 768
+    const ctx = gsap.context(() => {
+      const isMobile = window.innerWidth <= 768
+      const contentRows = sectionRef.current.querySelectorAll(`.${styles.contentRow}`)
+      
+      contentRows.forEach((row, index) => {
+        const img = row.querySelector('img')
+        const text = row.querySelectorAll('h3, p')
+        const isEven = index % 2 === 0
 
-    // Content rows animations
-    const contentRows = sectionRef.current.querySelectorAll(`.${styles.contentRow}`)
-    
-    contentRows.forEach((row, index) => {
-      const img = row.querySelector('img')
-      const text = row.querySelectorAll('h3, p')
-      const isEven = index % 2 === 0
+        // Set initial states
+        gsap.set(img, {
+          x: isEven ? (isMobile ? 100 : 200) : (isMobile ? -100 : -200),
+          rotation: isEven ? 5 : -5,
+          opacity: 0
+        })
+        gsap.set(text, {
+          y: 30,
+          opacity: 0
+        })
 
-      // Set initial states
-      gsap.set(img, {
-        x: isEven ? (isMobile ? 170 : 369.5) : (isMobile ? -170 : -369.5),
-        rotation: isEven ? 10 : -10,
-        opacity: 0
+        // Create timeline for each row
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: row,
+            start: "top bottom",
+            end: "center center",
+            toggleActions: "play none none reverse"
+          }
+        })
+
+        tl.to(img, {
+          x: 0,
+          rotation: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power2.out"
+        })
+        .to(text, {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power2.out"
+        }, "-=0.5")
       })
-      gsap.set(text, {
-        y: 50,
-        opacity: 0
-      })
+    }, sectionRef)
 
-      // Create timeline for each row
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: row,
-          start: "top bottom",
-          end: "center center",
-          toggleActions: "restart pause reverse pause"
-        }
-      })
+    return () => ctx.revert()
+  }, [])
 
-      tl.to(img, {
-        x: 0,
-        rotation: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power2.out"
-      })
-      .to(text, {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power2.out"
-      }, "-=0.5")
-    })
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+  // Handle resize
+  useEffect(() => {
+    const handleResize = () => {
+      ScrollTrigger.refresh()
     }
-  }, { scope: sectionRef })
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   return (
     <section className={styles.approach} ref={sectionRef}>

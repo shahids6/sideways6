@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -10,59 +10,68 @@ export const useTitleAnimation = () => {
   const subtitleRef = useRef(null);
 
   useGSAP(() => {
-    if (titleRef.current) {
-      // Set initial state
-      gsap.set(titleRef.current, {
-        x: -100,
-        backgroundPositionX: "100%"
-      });
+    const ctx = gsap.context(() => {
+      if (titleRef.current) {
+        // Set initial state
+        gsap.set(titleRef.current, {
+          x: -100,
+          opacity: 0,
+          backgroundPositionX: "100%"
+        });
 
-      // Animate title
-      gsap.to(titleRef.current, {
-        x: 0,
-        opacity: 1,
-        duration: 1.5,
-        ease: "power2.out",
-        backgroundPositionX: "0%",
-        scrollTrigger: {
-          trigger: titleRef.current,
-          start: "top bottom",
-          end: "top 10vh",
-          scrub: 1,
-          toggleActions: "restart pause reverse pause"
-        }
-      });
-    }
+        // Animate title
+        gsap.to(titleRef.current, {
+          x: 0,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power2.out",
+          backgroundPositionX: "0%",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top bottom",
+            end: "top center",
+            toggleActions: "play none none reverse"
+          }
+        });
+      }
 
-    if (subtitleRef.current) {
-      // Set initial state
-      gsap.set(subtitleRef.current, {
-        opacity: 0,
-        y: 55
-      });
+      if (subtitleRef.current) {
+        // Set initial state
+        gsap.set(subtitleRef.current, {
+          opacity: 0,
+          y: 55
+        });
 
-      // Animate subtitle
-      gsap.to(subtitleRef.current, {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: subtitleRef.current,
-          start: "top bottom",
-          end: "top center",
-          scrub: 1,
-          toggleActions: "restart pause reverse pause"
-        }
-      });
-    }
+        // Animate subtitle
+        gsap.to(subtitleRef.current, {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: subtitleRef.current,
+            start: "top bottom",
+            end: "top center",
+            toggleActions: "play none none reverse"
+          }
+        });
+      }
+    });
 
     return () => {
-      if (titleRef.current || subtitleRef.current) {
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      }
+      ctx.revert();
     };
-  }, { scope: titleRef });
+  }, []);
+
+  // Handle resize
+  useEffect(() => {
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return { titleRef, subtitleRef };
 };

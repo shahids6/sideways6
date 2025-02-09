@@ -51,7 +51,7 @@ const ApproachFiller = () => {
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill())
     }
-  }, { scope: containerRef })
+  }, { scope: containerRef }, [titleRef, cardsRef]);
 
   return (
     <div className={styles.container} ref={containerRef}>
