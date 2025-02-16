@@ -19,29 +19,19 @@ const ApproachFiller = () => {
     // Cards animations
     cardsRef.current.forEach((card, index) => {
       // Set initial state
-      gsap.set(card, {
+      gsap.from(card, {
         opacity: 0,
-        rotateX: 25,
-        transformPerspective: 1200,
+        rotateX: 35,
         scale: 1,
         rotate: 0,
         rotateY: 0,
         skewX: 0,
         skewY: 0,
-        transformOrigin: 'unset'
-      })
-
-      // Create animation
-      gsap.to(card, {
-        opacity: 1,
-        rotateX: 0,
-        y: 0,
-        duration: 1.2,
-        ease: "power2.out",
+        transformOrigin: 'unset',
         scrollTrigger: {
           trigger: card,
-          start: "top bottom",
-          end: "top 60%",
+          start: "top 100%",
+          end: "top 20%",
           scrub: 1,
           toggleActions: "restart pause reverse pause"
         }

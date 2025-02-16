@@ -22,40 +22,29 @@ const Approach = () => {
         const isEven = index % 2 === 0
 
         // Set initial states
-        gsap.set(img, {
-          x: isEven ? (isMobile ? 100 : 200) : (isMobile ? -100 : -200),
-          rotation: isEven ? 5 : -5,
-          opacity: 0
-        })
-        gsap.set(text, {
-          y: 30,
-          opacity: 0
-        })
+       
 
         // Create timeline for each row
         const tl = gsap.timeline({
+          duration: 1.5,
           scrollTrigger: {
             trigger: row,
-            start: "top bottom",
-            end: "center center",
+            start: "top 100%",
+            end: "top 20%",
+            scrub: 1,
             toggleActions: "play none none reverse"
           }
         })
 
-        tl.to(img, {
-          x: 0,
-          rotation: 0,
-          opacity: 1,
-          duration: 1,
-          ease: "power2.out"
+        tl.from(img, {
+          x: isEven ? (isMobile ? 100 : 200) : (isMobile ? -100 : -200),
+          rotation: isEven ? 5 : -5,
+          opacity: 0
         })
-        .to(text, {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: "power2.out"
-        }, "-=0.5")
+        tl.from(text, {
+          y: 30,
+          opacity: 0
+        })
       })
     }, sectionRef)
 

@@ -29,81 +29,21 @@ const Achievements = () => {
   const cardsRef = useRef([]);
 
   useGSAP(() => {
-    const isMobile = window.innerWidth <= 578;
 
     // Set initial state for all cards
     cardsRef.current.forEach(card => {
-      gsap.set(card, {
+      gsap.from(card, {
         opacity: 0,
         rotateX: 40,
-        transformPerspective: 1200,
-        scale: 1,
-        rotate: 0,
-        rotateY: 0,
-        skewX: 0,
-        skewY: 0,
-        transformOrigin: 'unset'
-      });
-    });
-
-    if (isMobile) {
-      // Mobile view - animate cards individually
-      cardsRef.current.forEach((card, index) => {
-        ScrollTrigger.create({
-          trigger: card,
-          start: "top bottom",
-          end: "top center",
-          onEnter: () => {
-            gsap.to(card, {
-              opacity: 1,
-              rotateX: 0,
-              y: 0,
-              duration: 1,
-              ease: "power2.out",
-            });
-          },
-          onLeave: () => {
-            gsap.to(card, {
-              opacity: 0,
-              rotateX: 40,
-              duration: 1,
-              ease: "power2.out",
-            });
-          },
-          onEnterBack: () => {
-            gsap.to(card, {
-              opacity: 1,
-              rotateX: 0,
-              duration: 1,
-              ease: "power2.out",
-            });
-          },
-          onLeaveBack: () => {
-            gsap.to(card, {
-              opacity: 0,
-              rotateX: 40,
-              duration: 1,
-              ease: "power2.out",
-            });
-          }
-        });
-      });
-    } else {
-      // Desktop view - animate all cards together
-      gsap.to(cardsRef.current, {
-        y: 0,
-        opacity: 1,
-        rotateX: 0,
         duration: 1,
-        ease: "power2.out",
         scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top bottom", 
-          end: "top 70%",
-          toggleActions: "play none none reverse"
+          trigger: card,
+          start: "top 80%", 
+          end: "top 20%",
+          scrub: 2,
         }
       })
-    }
+    });
 
     // Handle resize
     const handleResize = () => {
