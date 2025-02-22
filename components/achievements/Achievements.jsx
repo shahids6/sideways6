@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
+ScrollTrigger.normalizeScroll(true);
 gsap.registerPlugin(ScrollTrigger);
 
 const achievements = [

@@ -5,7 +5,8 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { useTitleAnimation } from '../../utils/animations'
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.normalizeScroll(true);
 
 const ApproachFiller = () => {
   const containerRef = useRef(null)

@@ -7,6 +7,7 @@ import { useGSAP } from '@gsap/react'
 import { useTitleAnimation } from "../../utils/animations";
 
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.normalizeScroll(true);
 
 const Services = () => {
   const servicesRef = useRef(null);

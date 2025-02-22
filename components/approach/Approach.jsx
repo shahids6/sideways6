@@ -6,6 +6,7 @@ import { useGSAP } from '@gsap/react';
 import { useTitleAnimation } from '../../utils/animations';
 
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.normalizeScroll(true);
 
 const Approach = () => {
   const sectionRef = useRef(null);
