@@ -1,11 +1,11 @@
+'use-client'
 import React, { useRef } from 'react';
 import styles from './Achievements.module.css';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
-ScrollTrigger.config({ limitCallbacks: true });
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 const achievements = [
   { 
@@ -30,8 +30,12 @@ const Achievements = () => {
   const cardsRef = useRef([]);
   
   useGSAP(() => {
-    
-    ScrollTrigger.normalizeScroll(true);
+    ScrollTrigger.normalizeScroll({
+      allowNestedScroll: true,
+      lockAxis: false,
+      momentum: self => Math.min(3, self.velocityY / 1000), // dynamically control the duration of the momentum when flick-scrolling
+      type: "touch,wheel,pointer", // now the page will be drag-scrollable on desktop because "pointer" is in the list
+    });
     // Set initial state for all cards
     cardsRef.current.forEach(card => {
       gsap.from(card, {
