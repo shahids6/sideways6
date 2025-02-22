@@ -6,13 +6,14 @@ import { useGSAP } from '@gsap/react';
 import { useTitleAnimation } from '../../utils/animations';
 
 gsap.registerPlugin(ScrollTrigger);
-ScrollTrigger.normalizeScroll(true);
+ScrollTrigger.config({ limitCallbacks: true });
 
 const Approach = () => {
   const sectionRef = useRef(null);
   const { titleRef, subtitleRef } = useTitleAnimation();
 
   useGSAP(() => {
+    ScrollTrigger.normalizeScroll(true);
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia(); // Match media for responsiveness
 

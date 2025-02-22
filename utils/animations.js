@@ -4,18 +4,13 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import { useRef, useEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
-ScrollTrigger.normalizeScroll({
-  allowNestedScroll: true,
-  lockAxis: false,
-  momentum: self => Math.min(3, self.velocityY / 1000), // dynamically control the duration of the momentum when flick-scrolling
-  type: "touch,wheel,pointer", // now the page will be drag-scrollable on desktop because "pointer" is in the list
-});;
 
 export const useTitleAnimation = () => {
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
 
   useGSAP(() => {
+    ScrollTrigger.normalizeScroll(true);
     const ctx = gsap.context(() => {
       if (titleRef.current) {
         // Set initial state

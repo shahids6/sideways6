@@ -4,38 +4,34 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
+ScrollTrigger.config({ limitCallbacks: true });
 gsap.registerPlugin(ScrollTrigger)
-ScrollTrigger.normalizeScroll({
-  allowNestedScroll: true,
-  lockAxis: false,
-  momentum: self => Math.min(3, self.velocityY / 1000), // dynamically control the duration of the momentum when flick-scrolling
-  type: "touch,wheel,pointer", // now the page will be drag-scrollable on desktop because "pointer" is in the list
-});
 
 const achievements = [
-    { 
-      number: '400+', 
-      label: 'Beautiful Events',
-      image: '/images/beautiful-event.jpg' // Table setup with flowers image
-    },
-    { 
-      number: '60+', 
-      label: 'Successful Activations',
-      image: '/images/services/BTL ACTIVATIONS.jpg' // Wedding ceremony setup image
-    },
-    { 
-      number: '50+', 
-      label: 'Happy Clients',
-      image: '/images/happy-client.avif' // People celebrating image
-    },
-  ];
+  { 
+    number: '400+', 
+    label: 'Beautiful Events',
+    image: '/images/beautiful-event.jpg' // Table setup with flowers image
+  },
+  { 
+    number: '60+', 
+    label: 'Successful Activations',
+    image: '/images/services/BTL ACTIVATIONS.jpg' // Wedding ceremony setup image
+  },
+  { 
+    number: '50+', 
+    label: 'Happy Clients',
+    image: '/images/happy-client.avif' // People celebrating image
+  },
+];
 
 const Achievements = () => {
   const containerRef = useRef(null);
   const cardsRef = useRef([]);
-
+  
   useGSAP(() => {
-
+    
+    ScrollTrigger.normalizeScroll(true);
     // Set initial state for all cards
     cardsRef.current.forEach(card => {
       gsap.from(card, {
