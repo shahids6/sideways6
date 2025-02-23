@@ -66,7 +66,7 @@ const Gallery = () => {
             onMouseEnter={() => setPausedColumn(columnIndex)}
             onMouseLeave={() => setPausedColumn(null)}
           >
-            <div className={`${styles['column-scroll']} ${pausedColumn === columnIndex ? styles['paused'] : ''}`}>
+            <div className={`${styles['column-scroll']} ${columnIndex === 1 ? styles['second-column'] : ''} ${pausedColumn === columnIndex ? styles['paused'] : ''}`}>
               {/* Double the images for seamless scrolling */}
               {[...column, ...column].map((image, index) => (
                 <div 

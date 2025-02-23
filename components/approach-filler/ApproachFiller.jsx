@@ -33,7 +33,7 @@ const ApproachFiller = () => {
           start: "top 100%",
           end: "top 20%",
           scrub: 1,
-          toggleActions: "restart pause reverse pause"
+          toggleActions: 'play play reverse reverse',
         }
       })
     })
@@ -53,6 +53,23 @@ const ApproachFiller = () => {
 
   return (
     <div className={styles.container} ref={containerRef}>
+      <div className={styles.videoBg}>
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className={styles.videoElement}
+          width="1920"
+          height="1080"
+          loading="lazy"
+          preload="metadata"
+        >
+          <source src="/backgroundVideo.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div className={styles.overlay}></div>
       <div className={styles.wrapper} ref={wrapperRef}>
         <h2 className={`${styles.title} title1`} style={{textAlign: 'center'}} ref={titleRef}>
           We Create Event <br /> <span>Solutions With</span>

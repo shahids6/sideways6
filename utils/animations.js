@@ -15,7 +15,7 @@ export const useTitleAnimation = () => {
         // Set initial state
         gsap.set(titleRef.current, {
           x: -100,
-          opacity: 0,
+          opacity: .5,
           backgroundPositionX: "100%"
         });
 
@@ -23,14 +23,13 @@ export const useTitleAnimation = () => {
         gsap.to(titleRef.current, {
           x: 0,
           opacity: 1,
-          duration: 1.2,
-          ease: "power2.out",
+          duration: 1,
           backgroundPositionX: "0%",
           scrollTrigger: {
             trigger: titleRef.current,
-            start: "top bottom",
-            end: "top center",
-            toggleActions: "play none none reverse"
+            start: "top 90%",
+            end: "top 20%",
+            toggleActions: 'play play reverse reverse',
           }
         });
       }
@@ -47,12 +46,11 @@ export const useTitleAnimation = () => {
           y: 0,
           opacity: 1,
           duration: 1,
-          ease: "power2.out",
           scrollTrigger: {
             trigger: subtitleRef.current,
-            start: "top bottom",
-            end: "top center",
-            toggleActions: "play none none reverse"
+            start: "top 90%",
+            end: "top 20%",
+            toggleActions: 'play play reverse reverse',
           }
         });
       }

@@ -40,7 +40,7 @@ const Clients = () => {
       shuffledLogos.forEach((_, index) => {
         const timeout = setTimeout(() => {
           setVisibleLogos(prev => [...prev, index]);
-        }, 1000 + Math.random() * 2000);
+        }, index === 10 ? 0 : 1000 + Math.random() * 1500); // First logo appears quickly
         timeouts.push(timeout);
       });
 

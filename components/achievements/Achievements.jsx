@@ -33,14 +33,15 @@ const Achievements = () => {
     // Set initial state for all cards
     cardsRef.current.forEach(card => {
       gsap.from(card, {
-        opacity: .5,
+        opacity: 1,
         rotateX: 40,
         duration: 1,
         scrollTrigger: {
           trigger: card,
-          start: "top 80%", 
+          start: "top 90%", 
           end: "top 20%",
           scrub: 2,
+          toggleActions: 'play play reverse reverse',
         }
       })
     });

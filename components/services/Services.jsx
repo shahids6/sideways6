@@ -13,40 +13,21 @@ const Services = () => {
   const { titleRef, subtitleRef } = useTitleAnimation();
 
   useGSAP(() => {
-    // Header animation
-    gsap.from(`.${styles.headerSection}`, {
-      y: 100,
-      opacity: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: `.${styles.headerSection}`,
-        start: "top bottom",
-        end: "top center",
-        toggleActions: "play none none reverse"
-      }
-    })
 
     // Service cards animations
     const cards = servicesRef.current.querySelectorAll(`.${styles.serviceCard}`)
     
     cards.forEach((card, index) => {
-      gsap.set(card, {
+      gsap.from(card, {
         y: 100,
         opacity: 0,
-        scale: 0.8
-      })
-
-      gsap.to(card, {
-        y: 0,
-        opacity: 1,
-        scale: 1,
+        scale: 0.8,
         duration: 1,
-        ease: "power2.out",
         scrollTrigger: {
           trigger: card,
           start: "top bottom",
           end: "top center",
-          toggleActions: "play none none reverse"
+          toggleActions: 'play play reverse reverse',
         }
       })
     })

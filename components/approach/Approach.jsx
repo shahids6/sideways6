@@ -37,7 +37,7 @@ const Approach = () => {
                 start: 'top 90%',
                 end: 'top 20%',
                 scrub: 1,
-                toggleActions: 'play none none reverse',
+                toggleActions: 'play play reverse reverse',
               },
             })
               .from(img, {
@@ -45,7 +45,6 @@ const Approach = () => {
                 rotation: isEven ? 5 : -5,
                 opacity: 0,
                 duration: 1.2,
-                ease: 'power3.out',
               })
               .from(text, {
                 y: 30,
