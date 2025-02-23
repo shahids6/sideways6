@@ -13,7 +13,6 @@ const Services = () => {
   const { titleRef, subtitleRef } = useTitleAnimation();
 
   useGSAP(() => {
-    ScrollTrigger.normalizeScroll(true);
     // Header animation
     gsap.from(`.${styles.headerSection}`, {
       y: 100,
@@ -52,7 +51,15 @@ const Services = () => {
       })
     })
 
+    // Handle resize
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener('resize', handleResize);
+
     return () => {
+      window.removeEventListener('resize', handleResize);
       ScrollTrigger.getAll().forEach(trigger => trigger.kill())
     }
   }, { scope: servicesRef })

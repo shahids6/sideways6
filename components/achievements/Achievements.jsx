@@ -33,7 +33,7 @@ const Achievements = () => {
     // Set initial state for all cards
     cardsRef.current.forEach(card => {
       gsap.from(card, {
-        opacity: 0,
+        opacity: .5,
         rotateX: 40,
         duration: 1,
         scrollTrigger: {

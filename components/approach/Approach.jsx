@@ -13,7 +13,6 @@ const Approach = () => {
   const { titleRef, subtitleRef } = useTitleAnimation();
 
   useGSAP(() => {
-    ScrollTrigger.normalizeScroll(true);
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia(); // Match media for responsiveness
 
@@ -64,12 +63,8 @@ const Approach = () => {
 
   // Optimized Resize Event
   useEffect(() => {
-    let resizeTimer;
     const handleResize = () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        ScrollTrigger.refresh();
-      }, 200); // Debounced refresh
+      ScrollTrigger.refresh();
     };
 
     window.addEventListener('resize', handleResize);

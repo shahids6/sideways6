@@ -10,7 +10,6 @@ export const useTitleAnimation = () => {
   const subtitleRef = useRef(null);
 
   useGSAP(() => {
-    ScrollTrigger.normalizeScroll(true);
     const ctx = gsap.context(() => {
       if (titleRef.current) {
         // Set initial state
@@ -59,7 +58,15 @@ export const useTitleAnimation = () => {
       }
     });
 
+    // Handle resize
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener('resize', handleResize);
+
     return () => {
+      window.removeEventListener('resize', handleResize);
       ctx.revert();
     };
   }, []);

@@ -14,14 +14,13 @@ const ApproachFiller = () => {
   const wrapperRef = useRef(null)
 
   useGSAP(() => {
-    ScrollTrigger.normalizeScroll(true);
     // Title animation
 
     // Cards animations
     cardsRef.current.forEach((card, index) => {
       // Set initial state
       gsap.from(card, {
-        opacity: 0,
+        opacity: .5,
         rotateX: 35,
         scale: 1,
         rotate: 0,
@@ -39,7 +38,15 @@ const ApproachFiller = () => {
       })
     })
 
+    // Handle resize
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener('resize', handleResize);
+
     return () => {
+      window.removeEventListener('resize', handleResize);
       ScrollTrigger.getAll().forEach(trigger => trigger.kill())
     }
   }, { scope: containerRef }, [titleRef, cardsRef]);
