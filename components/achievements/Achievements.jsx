@@ -30,7 +30,6 @@ const Achievements = () => {
   const cardsRef = useRef([]);
   
   useGSAP(() => {
-    ScrollTrigger.normalizeScroll(true);
     // Set initial state for all cards
     cardsRef.current.forEach(card => {
       gsap.from(card, {
@@ -48,7 +47,6 @@ const Achievements = () => {
 
     // Handle resize
     const handleResize = () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       ScrollTrigger.refresh();
     };
 
