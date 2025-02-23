@@ -30,11 +30,7 @@ const Achievements = () => {
   const cardsRef = useRef([]);
   
   useGSAP(() => {
-    ScrollTrigger.normalizeScroll({
-      allowNestedScroll: true,
-      lockAxis: false,
-      type: "touch,wheel,pointer", // now the page will be drag-scrollable on desktop because "pointer" is in the list
-    });
+    ScrollTrigger.normalizeScroll(true);
     // Set initial state for all cards
     cardsRef.current.forEach(card => {
       gsap.from(card, {

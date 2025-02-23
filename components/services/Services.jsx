@@ -13,11 +13,7 @@ const Services = () => {
   const { titleRef, subtitleRef } = useTitleAnimation();
 
   useGSAP(() => {
-    ScrollTrigger.normalizeScroll({
-      allowNestedScroll: true,
-      lockAxis: false,
-      type: "touch,wheel,pointer", // now the page will be drag-scrollable on desktop because "pointer" is in the list
-    });
+    ScrollTrigger.normalizeScroll(true);
     // Header animation
     gsap.from(`.${styles.headerSection}`, {
       y: 100,

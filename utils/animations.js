@@ -10,11 +10,7 @@ export const useTitleAnimation = () => {
   const subtitleRef = useRef(null);
 
   useGSAP(() => {
-    ScrollTrigger.normalizeScroll({
-      allowNestedScroll: true,
-      lockAxis: false,
-      type: "touch,wheel,pointer", // now the page will be drag-scrollable on desktop because "pointer" is in the list
-    });
+    ScrollTrigger.normalizeScroll(true);
     const ctx = gsap.context(() => {
       if (titleRef.current) {
         // Set initial state
