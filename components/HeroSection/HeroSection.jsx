@@ -10,6 +10,8 @@ const ScrollArrow = memo(() => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     className={styles.scrollArrow}
+    aria-hidden="true"
+    role="img"
   >
     <circle
       cx="12"
@@ -32,8 +34,8 @@ ScrollArrow.displayName = 'ScrollArrow';
 
 const HeroSection = () => {
   return (
-    <div className={styles.heroContainer} id="home">
-      <div className={styles.videoBg}>
+    <section className={styles.heroContainer} id="home" role="region" aria-label="Hero section">
+      <div className={styles.videoBg} aria-hidden="true">
         <video 
           autoPlay 
           loop 
@@ -43,16 +45,18 @@ const HeroSection = () => {
           width="1920"
           height="1080"
           loading="lazy"
-          preload="metadata"
+          preload="auto"
+          poster="/video-placeholder.png"
+          aria-hidden="true"
         >
           <source src="/backgroundVideo.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
 
-      <div className={styles.overlay}></div>
+      <div className={styles.overlay} aria-hidden="true"></div>
 
-      <div className={styles.heroContent}>
+      <div className={styles.heroContent} role="region" aria-label="Hero content">
         <div className={styles.titleContainer}>
           <h1 className={styles.title}>
             <span className={styles.titleText}>Crafting Extraordinary</span>
@@ -67,17 +71,19 @@ const HeroSection = () => {
           </p>
 
           <Link href="#contact">
-            <button className={styles.primaryBtn}>Get In Touch</button>
+            <button className={styles.primaryBtn} aria-label="Get in touch with us">
+              Get In Touch
+            </button>
           </Link>
 
-          <Link href="#achievements">
+          <Link href="#achievements" aria-label="Scroll to achievements section">
             <div className={styles.scrollDown}>
               <ScrollArrow />
             </div>
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

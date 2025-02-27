@@ -60,21 +60,24 @@ const Achievements = () => {
   }, { scope: containerRef });
   
   return (
-    <div className={styles.container} id='achievements' ref={containerRef}>
+    <div className={styles.container} id='achievements' ref={containerRef} role="region" aria-label="Our achievements">
       {achievements.map((achievement, index) => (
         <div 
           key={index} 
           className={styles.achievementCard}
           ref={el => cardsRef.current[index] = el}
+          role="article"
+          aria-labelledby={`achievement-${index}`}
         >
           <img 
             src={achievement.image} 
-            alt={achievement.label}
+            alt={`Illustration for ${achievement.label}`}
             className={styles.backgroundImage}
+            aria-hidden="true"
           />
           <div className={styles.content}>
-            <div className={styles.number}>{achievement.number}</div>
-            <div className={styles.label}>{achievement.label}</div>
+            <div className={styles.number} id={`achievement-${index}`} role="text">{achievement.number}</div>
+            <div className={styles.label} role="text">{achievement.label}</div>
           </div>
         </div>
       ))}

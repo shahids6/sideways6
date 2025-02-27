@@ -16,6 +16,8 @@ const MenuIcon = () => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
+    aria-hidden="true"
+    role="img"
   >
     <line x1="3" y1="12" x2="21" y2="12" />
     <line x1="3" y1="6" x2="21" y2="6" />
@@ -33,6 +35,8 @@ const CloseIcon = () => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
+    aria-hidden="true"
+    role="img"
   >
     <line x1="18" y1="6" x2="6" y2="18" />
     <line x1="6" y1="6" x2="18" y2="18" />
@@ -60,21 +64,26 @@ const Header = () => {
   ];
 
   return (
-    <header className={isScrolled ? 'scrolled' : ''}>
-      <nav>
+    <header className={isScrolled ? 'scrolled' : ''} role="banner">
+      <nav aria-label="Main navigation">
         <div className="nav-container">
-          <Link href="/" className="logo">
-            <div className='logo-desktop'><Image src={brandLogo} alt="Brand Logo" width={200} height={57} /></div>
-            <div className="logo-mobile"><Image src={brandLogo} alt="Brand Logo" width={115} height={35} /></div>
+          <Link href="/" className="logo" aria-label="Sideways 6 Home">
+            <div className='logo-desktop'>
+              <Image src={brandLogo} alt="Sideways 6 Logo" width={200} height={57} />
+            </div>
+            <div className="logo-mobile">
+              <Image src={brandLogo} alt="Sideways 6 Logo" width={115} height={35} />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="desktop-nav">
+          <div className="desktop-nav" role="navigation" aria-label="Desktop menu">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className="nav-link"
+                aria-label={`Navigate to ${item.label}`}
               >
                 {item.label}
               </Link>
@@ -85,6 +94,9 @@ const Header = () => {
           <button
             className="mobile-menu-button"
             onClick={() => setIsOpen(!isOpen)}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             <div className="icon-container">
               <div className={`icon ${isOpen ? 'open' : ''}`}>
@@ -96,7 +108,12 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="mobile-menu">
+          <div 
+            id="mobile-menu"
+            className="mobile-menu"
+            role="navigation"
+            aria-label="Mobile menu"
+          >
             <div className="mobile-menu-items">
               {navItems.map((item) => (
                 <Link
@@ -104,6 +121,7 @@ const Header = () => {
                   href={item.href}
                   className="mobile-nav-link"
                   onClick={() => setIsOpen(false)}
+                  aria-label={`Navigate to ${item.label}`}
                 >
                   {item.label}
                 </Link>
@@ -231,7 +249,7 @@ const Header = () => {
         }
           .desktop-nav {
             display: flex;
-            align-items: center;
+            align-items: center;  
             gap: 2rem;
           }
 

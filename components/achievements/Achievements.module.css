@@ -10,7 +10,7 @@
 
 .achievementCard {
   text-align: center;
-  border-radius: 12px;
+  border-radius: 1rem;
   transition: transform 0.3s ease;
   position: relative;
   width: 300px;
@@ -67,7 +67,7 @@
   }
 
   .achievementCard {
-    height: 250px;
+    height: 228px;
     width: 100%;
   }
 }

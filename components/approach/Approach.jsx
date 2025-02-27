@@ -41,7 +41,7 @@ const Approach = () => {
               },
             })
               .from(img, {
-                x: isEven ? (isMobile ? 50 : 200) : (isMobile ? -50 : -200),
+                x: isEven ? (isMobile ? 150 : 200) : (isMobile ? -150 : -200),
                 rotation: isEven ? 5 : -5,
                 opacity: 0,
                 duration: 1.2,
@@ -71,11 +71,11 @@ const Approach = () => {
   }, []);
 
   return (
-    <section className={styles.approach} ref={sectionRef}>
+    <section className={styles.approach} ref={sectionRef} role="region" aria-label="Our approach">
       {/* Header section */}
-      <div className={styles.header}>
+      <div className={styles.header} role="banner">
         <h2 className='title1' ref={titleRef}>Our Approach</h2>
-        <p className='subTitle1' ref={subtitleRef}>
+        <p className='subTitle1' ref={subtitleRef} role="text">
           We are a creative powerhouse that builds beloved brands by delivering unique services and innovative events, all while staying true to client values and pushing the boundaries of excellence.
         </p>
       </div>
@@ -107,25 +107,25 @@ const Approach = () => {
           alt: 'Proficiency Pioneers',
         },
       ].map(({ title, text, img, alt }, index) => (
-        <div className={styles.contentRow} key={index}>
+        <div className={styles.contentRow} key={index} role="article" aria-labelledby={`approach-title-${index}`}>
           {index % 2 !== 0 ? (
             <>
               <div className={styles.leftContent} style={{ flex: '0 0 55%' }}>
-                <img src={img} alt={alt} className={styles.approachImage} />
+                <img src={img} alt={alt} className={styles.approachImage} aria-hidden="true" />
               </div>
               <div className={styles.rightContent}>
-                <h3>{title}</h3>
-                <p>{text}</p>
+                <h3 id={`approach-title-${index}`}>{title}</h3>
+                <p role="text">{text}</p>
               </div>
             </>
           ) : (
             <>
               <div className={styles.leftContent}>
-                <h3>{title}</h3>
-                <p>{text}</p>
+                <h3 id={`approach-title-${index}`}>{title}</h3>
+                <p role="text">{text}</p>
               </div>
               <div className={styles.rightContent} style={{ flex: '0 0 55%' }}>
-                <img src={img} alt={alt} className={styles.approachImage} />
+                <img src={img} alt={alt} className={styles.approachImage} aria-hidden="true" />
               </div>
             </>
           )}

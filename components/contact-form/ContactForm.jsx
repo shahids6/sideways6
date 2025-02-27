@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styles from './style.module.css';
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -6,6 +6,7 @@ const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     message: ''
   });
   const [errors, setErrors] = useState({});
@@ -57,36 +58,49 @@ const ContactForm = () => {
   };
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   return (
-    <section className={styles.contactSection} id='contact'>
+    <section className={styles.contactSection} id="contact" role="region" aria-label="Contact form section">
       <Toaster position="bottom-left" />
       <div className={styles.contactWrapper}>
         <div className={styles.leftSection}>
           <h2 className={styles.title}>Get in Touch</h2>
           <p className={styles.subtitle}>Let's connect and discuss your needs</p>
           
-          <div className={styles.contactInfo}>
-            <div className={styles.contactItem} >
-              <svg className={styles.icon} viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <div className={styles.contactInfo} role="complementary" aria-label="Contact information">
+            <div className={styles.contactItem}>
+              <svg className={styles.icon} viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" role="img">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
                   d="M12 21s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 7.2c0 7.3-8 11.8-8 11.8z"/>
                 <circle cx="12" cy="9" r="3" strokeWidth="2"/>
               </svg>
-              <a href="https://maps.app.goo.gl/BHqTbUxiC8G4JFwU6" target="_blank">No. 134/1, Ground Floor, Lakshmaiah Block, Ganganagar, Bengaluru-560 024.</a>
+              <a 
+                href="https://maps.app.goo.gl/BHqTbUxiC8G4JFwU6" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Visit our office at No. 134/1, Ground Floor, Lakshmaiah Block, Ganganagar, Bengaluru-560 024"
+              >
+                No. 134/1, Ground Floor, Lakshmaiah Block, Ganganagar, Bengaluru-560 024.
+              </a>
             </div>
             
             <div className={styles.contactItem}>
-              <svg className={styles.icon} viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <svg className={styles.icon} viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" role="img">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
                   d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
               </svg>
-              <a href="mailto:devraj@sideways6.in">devraj@sideways6.in</a>
+              <a 
+                href="mailto:devraj@sideways6.in"
+                aria-label="Email us at devraj@sideways6.in"
+              >
+                devraj@sideways6.in
+              </a>
             </div>
             
             <div className={styles.contactItem}>
@@ -118,47 +132,60 @@ const ContactForm = () => {
         </div>
         
         <div className={styles.rightSection}>
-          <form onSubmit={handleSubmit} className={styles.form}>
+          <form onSubmit={handleSubmit} className={styles.form} aria-label="Contact form">
             <div className={styles.inputGroup}>
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name" className={styles.label}>Name</label>
               <input
-                id="name"
                 type="text"
+                id="name"
                 name="name"
-                placeholder="Your Name"
                 value={formData.name}
                 onChange={handleChange}
                 required
+                className={styles.input}
+                aria-required="true"
+                aria-label="Enter your name"
               />
               {errors.name && <span className={styles.error}>{errors.name}</span>}
             </div>
+
             <div className={styles.inputGroup}>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email" className={styles.label}>Email</label>
               <input
-                id="email"
                 type="email"
+                id="email"
                 name="email"
-                placeholder="Your Email"
                 value={formData.email}
                 onChange={handleChange}
                 required
+                className={styles.input}
+                aria-required="true"
+                aria-label="Enter your email"
               />
               {errors.email && <span className={styles.error}>{errors.email}</span>}
             </div>
+
             <div className={styles.inputGroup}>
-              <label htmlFor="message">Message</label>
+              <label htmlFor="message" className={styles.label}>Message</label>
               <textarea
                 id="message"
                 name="message"
-                placeholder="Your Message"
                 value={formData.message}
                 onChange={handleChange}
                 required
-                rows={5}
-              />
+                className={styles.textarea}
+                rows="4"
+                aria-required="true"
+                aria-label="Enter your message"
+              ></textarea>
               {errors.message && <span className={styles.error}>{errors.message}</span>}
             </div>
-            <button type="submit" className={styles.submitButton}>
+
+            <button 
+              type="submit" 
+              className={styles.submitButton}
+              aria-label="Submit contact form"
+            >
               Send Message
             </button>
           </form>

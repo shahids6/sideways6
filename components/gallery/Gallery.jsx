@@ -54,25 +54,29 @@ const Gallery = () => {
   };
 
   return (
-    <div className={styles['gallery-container']} id='gallery'>
+    <div className={styles['gallery-container']} id='gallery' role="region" aria-label="Events gallery">
       <h2 className='title1' style={{textAlign: 'center'}} ref={titleRef}>Events Gallery</h2>
-      <p className='subTitle1' style={{textAlign: 'center'}} ref={subtitleRef}>Capturing moments that tell your story</p>
+      <p className='subTitle1' style={{textAlign: 'center'}} ref={subtitleRef} role="text">Capturing moments that tell your story</p>
       
-      <div className={styles['gallery-columns-container']}>
+      <div className={styles['gallery-columns-container']} role="list" aria-label="Gallery images">
         {[column1, column2, column3].map((column, columnIndex) => (
           <div
             key={columnIndex}
             className={styles['gallery-column']}
             onMouseEnter={() => setPausedColumn(columnIndex)}
             onMouseLeave={() => setPausedColumn(null)}
+            role="list"
+            aria-label={`Gallery column ${columnIndex + 1}`}
           >
             <div className={`${styles['column-scroll']} ${columnIndex === 1 ? styles['second-column'] : ''} ${pausedColumn === columnIndex ? styles['paused'] : ''}`}>
-              {/* Double the images for seamless scrolling */}
               {[...column, ...column].map((image, index) => (
                 <div 
                   key={`${image.id}-${index}`}
                   className={styles['gallery-item']}
                   onClick={() => handleImageClick(image.id - 1)}
+                  role="listitem"
+                  aria-label={image.alt}
+                  tabIndex="0"
                 >
                   <div className={styles['image-wrapper']}>
                     <img src={image.url} alt={image.alt} />
@@ -85,14 +89,15 @@ const Gallery = () => {
       </div>
 
       {selectedImage !== null && (
-        <div className={styles.modal}>
+        <div className={styles.modal} role="dialog" aria-label="Image preview">
           <div className={styles['modal-content']}>
-            <button className={styles['close-button']} onClick={handleClose}>&times;</button>
-            <button className={styles['nav-button'] + ' ' + styles.prev} onClick={handlePrevious}>&lt;</button>
-            <button className={styles['nav-button'] + ' ' + styles.next} onClick={handleNext}>&gt;</button>
+            <button className={styles['close-button']} onClick={handleClose} aria-label="Close image preview">&times;</button>
+            <button className={styles['nav-button'] + ' ' + styles.prev} onClick={handlePrevious} aria-label="Previous image">&lt;</button>
+            <button className={styles['nav-button'] + ' ' + styles.next} onClick={handleNext} aria-label="Next image">&gt;</button>
             <img 
               src={images[selectedImage].url} 
-              alt={images[selectedImage].alt} 
+              alt={images[selectedImage].alt}
+              aria-label={`Large preview of ${images[selectedImage].alt}`}
             />
           </div>
         </div>

@@ -71,18 +71,19 @@ const Clients = () => {
   }, []);
 
   return (
-    <section className={styles.clientsSection}>
+    <section className={styles.clientsSection} role="region" aria-label="Our clients">
       <h2 className='title1' ref={titleRef}>Our Prestigious Clients</h2>
-      <p className='subTitle1'>Partnering with industry leaders across the globe</p>
-      <div className={styles.logoContainer}>
+      <p className='subTitle1' role="text">Partnering with industry leaders across the globe</p>
+      <div className={styles.logoContainer} role="list" aria-label="Client logos">
         {logos.map((logo, index) => (
           <div 
             key={index} 
             className={`${styles.logoWrapper} ${visibleLogos.includes(index) ? styles.visible : ''}`}
+            role="listitem"
           >
             <Image
               src={logo}
-              alt={`Client Logo ${index + 1}`}
+              alt={`Client ${index + 1} Logo`}
               width={150}
               height={100}
               className={styles.logo}

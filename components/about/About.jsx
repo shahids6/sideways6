@@ -25,12 +25,12 @@ const About = () => {
   }, []);
 
   return (
-    <section className={styles.aboutSection} id='about'>
+    <section className={styles.aboutSection} id='about' role="region" aria-label="About us">
       <div className={styles.container}>
         <div className={styles.contentWrapper}>
           <div className={styles.textContent}>
             <h2 className="title1" ref={titleRef}><span>About Us</span></h2>
-            <p className={styles.aboutText1} ref={subtitleRef}>
+            <p className={styles.aboutText1} ref={subtitleRef} role="text">
               <span>Sideways 6, a proud unit of AD6 Advertising, is a vibrant
               collective of diverse yet like-minded individuals driven by a
               shared passion for innovation and excellence. Our guiding
@@ -38,7 +38,7 @@ const About = () => {
               foundation of everything we do, all delivered with unwavering
               enthusiasm and a smile.</span>
             </p>
-            <p className={styles.aboutText2}>
+            <p className={styles.aboutText2} role="text">
               <span>At Sideways 6, building brands we love isn't just our mission—it's
               our art. We thrive on pushing boundaries, thinking differently,
               and crafting experiences that resonate deeply with our clients'
@@ -56,7 +56,7 @@ const About = () => {
               brand identities.</span>
             </p> */}
           </div>
-          <div className={styles.iframeContainer}>
+          <div className={styles.iframeContainer} role="complementary" aria-label="About us video">
             <iframe
               src="https://www.youtube.com/embed/MFWN6BJmZ4c?si=UlKMNDT6u3E9GfCa"
               title="About Us Video"
@@ -64,6 +64,7 @@ const About = () => {
               height="100%"
               frameBorder="0"
               allowFullScreen
+              aria-label="About Sideways 6 company video"
             />
           </div>
         </div>

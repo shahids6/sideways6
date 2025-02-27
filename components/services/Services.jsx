@@ -13,7 +13,6 @@ const Services = () => {
   const { titleRef, subtitleRef } = useTitleAnimation();
 
   useGSAP(() => {
-
     // Service cards animations
     const cards = servicesRef.current.querySelectorAll(`.${styles.serviceCard}`)
     
@@ -135,25 +134,27 @@ const Services = () => {
   );
 
   return (
-    <section className={styles.services} id='services'>
+    <section className={styles.services} id='services' role="region" aria-label="Our services">
       <div className={styles.headerSection}>
         <h2 className='title1' ref={titleRef}>Our Services</h2>
         <p className='subTitle1' ref={subtitleRef}>Comprehensive Solutions, Seamless Experiences</p>
       </div>
-      <div className={styles.servicesContainer} ref={servicesRef}>
+      <div className={styles.servicesContainer} ref={servicesRef} role="list">
         {services.map((service, index) => (
           <div
             key={index}
             className={styles.serviceCard}
+            role="listitem"
+            aria-labelledby={`service-title-${index}`}
           >
             <div className={`${styles.cardContent} ${index % 2 !== 0 ? styles.reverse : ''}`}>
               <div className={styles.textContent}>
-                <h3>{service.title}</h3>
+                <h3 id={`service-title-${index}`}>{service.title}</h3>
                 <p>{service.description}</p>
-                <ul className={styles.bulletPoints}>
+                <ul className={styles.bulletPoints} role="list" aria-label={`Features of ${service.title}`}>
                   {service.bulletPoints.map((point, idx) => (
-                    <li key={idx}>
-                      <CheckmarkIcon />
+                    <li key={idx} role="listitem">
+                      <CheckmarkIcon aria-hidden="true" />
                       <span>{point}</span>
                     </li>
                   ))}
@@ -162,7 +163,7 @@ const Services = () => {
               <div className={styles.imageContent}>
                 <Image
                   src={service.contentImage}
-                  alt={service.title}
+                  alt={`Illustration of ${service.title}`}
                   width={500}
                   height={320}
                   layout="fixed"
