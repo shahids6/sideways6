@@ -139,6 +139,7 @@ const ContactForm = () => {
                 type="text"
                 id="name"
                 name="name"
+                placeholder="Enter name"
                 value={formData.name}
                 onChange={handleChange}
                 required
@@ -155,6 +156,7 @@ const ContactForm = () => {
                 type="email"
                 id="email"
                 name="email"
+                placeholder="Enter email"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -170,6 +172,7 @@ const ContactForm = () => {
               <textarea
                 id="message"
                 name="message"
+                placeholder="Message"
                 value={formData.message}
                 onChange={handleChange}
                 required
