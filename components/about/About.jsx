@@ -31,23 +31,14 @@ const About = () => {
           <div className={styles.textContent}>
             <h2 className="title1" ref={titleRef}><span>About Us</span></h2>
             <p className={styles.aboutText1} ref={subtitleRef} role="text">
-              <span>Sideways 6, a proud unit of AD6 Advertising, an event
-              management company is a vibrant
-              collective of diverse yet like-minded individuals driven by a
-              shared passion for innovation and excellence. Our guiding
-              principles—'Delivering Unique Service' and 'Great Ideas'—form the
-              foundation of everything we do, all delivered with unwavering
-              enthusiasm and a smile.</span>
+              <span>At Sideways 6, we bring creativity and precision to event management,
+                delivering impactful corporate events that reflect true brand identity.
+                As a leading event management company and trusted event planners,
+                we handle everything from event decoration to creating the perfect stage
+                for event experiences. Recognised among the top corporate event planners
+                in Bangalore, our events company offers seamless events and services,
+                making us the go-to corporate event management company in Bangalore.</span>
             </p>
-            <p className={styles.aboutText2} role="text">
-              <span>At Sideways 6, building brands we love isn't just our
-              mission—it's our art. We approach event planning with
-              unparalleled creativity and precision, ensuring each project
-              is as unique and memorable as the story behind it.</span>
-            </p>
-            {/* <p className={styles.aboutText3}>
-              <span>We bring creativity and precision to event management, delivering impactful corporate events that reflect true brand identity. As a leading event management company and trusted event planners, we handle everything from event decoration to creating the perfect stage for event experiences. Recognised among the top corporate event planners in Bangalore, our events company in Bangalore offers seamless events and services, making us the go-to corporate event management company in Bangalore.</span>
-            </p> */}
           </div>
           <div className={styles.iframeContainer} role="complementary" aria-label="About us video">
             <iframe
