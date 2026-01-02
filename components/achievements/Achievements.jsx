@@ -9,17 +9,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 const achievements = [
   { 
-    number: '400+', 
-    label: 'Beautiful Events',
+    number: '1950+', 
+    label: 'Events/Exhibitions',
     image: '/images/beautiful-event.jpg' // Table setup with flowers image
   },
   { 
-    number: '60+', 
-    label: 'Successful Activations',
+    number: '5,00,000+', 
+    label: 'Attendees',
     image: '/images/services/BTL ACTIVATIONS.jpg' // Wedding ceremony setup image
   },
   { 
-    number: '50+', 
+    number: '90+', 
     label: 'Happy Clients',
     image: '/images/happy-client.avif' // People celebrating image
   },
