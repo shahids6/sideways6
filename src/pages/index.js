@@ -12,7 +12,7 @@ import ContactForm from "../../components/contact-form/ContactForm";
 import Footer from "../../components/footer/Footer";
 
 export default function Home() {
-  const title = "Sideways 6 - Innovative Event Planning & Brand Building";
+  const title = "Sideways 6-Events | Exhibitions | Activations";
   const description = "Sideways 6, a division of AD6 Advertising, specializes in innovative event planning and brand building. Driven by creativity and excellence, we craft unique experiences that captivate audiences and strengthen brand identities.";
   const keywords = "event planning, brand building, corporate events, product launches, trade shows, conferences, event management bangalore, brand strategy";
   const ogImage = "https://sideways6.in/og-image.jpg"; // Make sure to add this image
