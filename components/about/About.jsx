@@ -42,7 +42,7 @@ const About = () => {
           </div>
           <div className={styles.iframeContainer} role="complementary" aria-label="About us video">
             <iframe
-              src="https://www.youtube.com/embed/MFWN6BJmZ4c?si=UlKMNDT6u3E9GfCa"
+              src="https://www.youtube.com/embed/yPA1pXfxunI"
               title="About Us Video"
               width="100%"
               height="100%"
