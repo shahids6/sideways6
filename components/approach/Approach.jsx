@@ -76,7 +76,7 @@ const Approach = () => {
       <div className={styles.header} role="banner">
         <h2 className='title1' ref={titleRef}>Our Approach</h2>
         <p className='subTitle1' ref={subtitleRef} role="text">
-          We are a creative powerhouse that builds beloved brands by delivering unique services and innovative events, all while staying true to client values and pushing the boundaries of excellence.
+          Event execution with precision, passion, and perfection.
         </p>
       </div>
 
