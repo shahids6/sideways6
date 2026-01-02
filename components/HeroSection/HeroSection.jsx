@@ -65,9 +65,8 @@ const HeroSection = () => {
           </h1>
 
           <p className={styles.subtitle}>
-            With expertise, excellence, and a proven track record,
-            <br /> we design innovative, large-scale events <br /> that
-            captivate audiences and strengthen brands.
+            Your next big event deserves the best-
+            <br /> let’s connect and make it happen! <br />
           </p>
 
           <Link href="#contact">
