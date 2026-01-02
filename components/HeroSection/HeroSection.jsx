@@ -59,7 +59,7 @@ const HeroSection = () => {
       <div className={styles.heroContent} role="region" aria-label="Hero content">
         <div className={styles.titleContainer}>
           <h1 className={styles.title}>
-            <span className={styles.titleText}>Events | Exhibitions</span>
+            <span className={styles.titleText}>Events | Exhibitions |</span>
             <br />
             <span className={styles.titleText}>Activations</span>
           </h1>
